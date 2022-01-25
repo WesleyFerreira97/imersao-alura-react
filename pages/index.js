@@ -1,7 +1,7 @@
 import { Box } from '@skynexui/components';
 import GlobalStyle from '../styles/global';
-import logo from '../assets/svg/logo.svg';
 import Image from 'next/image';
+import logo from '../assets/svg/logo.svg';
 
 function HomePage() {
     return (
@@ -14,7 +14,7 @@ function HomePage() {
                 color: #fff;
                 font-size: 24px;
                 font-weight: 600;
-                fill: #fff;
+                fill: black;
                 stroke: white;
             }
             }
@@ -30,6 +30,8 @@ function HomePage() {
             backgroundSize: '400% 400%',
             animation: 'gradient 15s ease infinite',
             color: 'white',
+            backgroundImage: `url(${logo})`,
+            backgroundRepeat: 'repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
         }}
         >
         <Box

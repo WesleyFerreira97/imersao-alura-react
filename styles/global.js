@@ -1,5 +1,3 @@
-import '@skynexui/components'
-
 export default function GlobalStyle() {
     return (
       <style global jsx>{`

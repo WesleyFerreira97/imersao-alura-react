@@ -1,11 +1,24 @@
 import { Box } from '@skynexui/components';
 import GlobalStyle from '../styles/global';
+import logo from '../assets/svg/logo.svg';
+import Image from 'next/image';
 
 function HomePage() {
     return (
         <>
         <GlobalStyle />
-        
+        <style jsx>{`
+            .logo-container {
+
+                img {	
+                color: #fff;
+                font-size: 24px;
+                font-weight: 600;
+                fill: #fff;
+                stroke: white;
+            }
+            }
+        `}</style>
         <Box
         styleSheet={{
             display: 'flex',
@@ -14,6 +27,8 @@ function HomePage() {
             background: {
                 xs: 'linear-gradient(#21296C, #0032F4)',
             },
+            backgroundSize: '400% 400%',
+            animation: 'gradient 15s ease infinite',
             color: 'white',
         }}
         >
@@ -38,14 +53,20 @@ function HomePage() {
             justifyContent: 'center',
             background: {
                 xs: '#21296E',
+                lg: '#23253C',
             },
             color: 'white',
             borderRadius: '10px',
         }}
         >
-        <h1>Login : </h1>
+            <Image src={logo} className='logo-container'></Image>
+            <h1>Login : </h1>
+            {/* <h1>Senha : </h1> */}
         </Box>
         </Box>
+
+
+
         </>
     )
 }

@@ -14,14 +14,10 @@ function HomePage() {
             <Box
             styleSheet={{
                 backgroundColor: {
-                lg: appConfig.theme.colors.primary['500'],
+                lg: appConfig.theme.colors.primary['700'],
                 },
-                color: 'white',
-                margin: '16px',
-                padding: '16px'
             }}
             >
-            Box Component
             </Box>
         </>
     )

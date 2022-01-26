@@ -1,3 +1,5 @@
+import appConfig from '../config.json';
+
 export default function GlobalStyle() {
     return (
       <style global jsx>{`
@@ -9,6 +11,7 @@ export default function GlobalStyle() {
         }
         body {
           font-family: 'Open Sans', sans-serif;
+          background-color: ${appConfig.theme.colors.neutrals['200']};
         }
         /* App fit Height */ 
         html, body, #__next {

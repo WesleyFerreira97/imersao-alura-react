@@ -11,15 +11,14 @@ import { Background, Logo } from '../styles/homeStyles';
 function HomePage() {
     return (
         <>
-        <div className='bg-overall'></div>
             <Box
             styleSheet={{
                 height: '100vh',
                 display: 'flex',
                 justifyContent: 'center',
-                zIndex: -1,
                 color: '#fff',
                 position: 'relative',
+                // zIndex: '1',
             }}
             >
                 <Box 
@@ -35,16 +34,17 @@ function HomePage() {
                     backgroundColor: appConfig.theme.colors.primary['300'],
                     overflow: 'hidden',
                     position: 'relative',
-                    zIndex: -1,
+                    zIndex: '2',
                 }} >
-                    <WaveTop styleSheet={{
-                        position: 'absolute', bottom: '0',
-                        zIndex: -1,
-                    }} />
                     <div className='logo-wrap'>
                         <h1 className='logo'>Aluracord</h1>
                         {/* <h1 className='logo'>Navegue </h1> */}
                     </div>
+                    <WaveTop styleSheet={{
+                        position: 'absolute', bottom: '0',
+                        zIndex: '-1',
+                    }} />
+                    
                 </Box>
 
                 <Box 
@@ -52,8 +52,7 @@ function HomePage() {
                     width: '100vw',
                     height: '100vh',
                     position: 'absolute',
-                    zIndex: '50',
-                    backgroundColor: appConfig.theme.colors.primary['800'],
+                    // backgroundColor: appConfig.theme.colors.primary['800'],
                 }}
                 >
 

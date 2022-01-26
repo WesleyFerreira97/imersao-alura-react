@@ -3,21 +3,13 @@ import appConfig from '../config.json';
 
 export const Background = css`
 
-    .bg-overall {
-        height: 100vh;
-        width: 100vw;
-        position: absolute;
-        background-color: ${appConfig.theme.colors.neutrals['200']};
-        z-index: -1;
-    }
-
-    .footer-wave {
+.footer-wave {
         height: 60vh;
         width: 100%;
         position: absolute;
         bottom: 0;
-        background-color: ${appConfig.theme.colors.primary['800']};
         z-index: -1;
+        background-color: ${appConfig.theme.colors.primary['800']};
     }
 
     @media (min-width: 768px) {
@@ -30,8 +22,8 @@ export const Background = css`
 
 export const Logo = css`
     .logo-wrap {
-        z-index: 20;
         padding: 1.25rem;
+        z-index: 11;
     }
     .logo {
         font-size: 3rem;

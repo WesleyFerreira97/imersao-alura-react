@@ -16,8 +16,10 @@ function HomePage() {
             styleSheet={{
                 height: '100vh',
                 display: 'flex',
+                justifyContent: 'center',
                 zIndex: -1,
                 color: '#fff',
+                position: 'relative',
             }}
             >
                 <Box 
@@ -43,6 +45,18 @@ function HomePage() {
                         <h1 className='logo'>Aluracord</h1>
                         {/* <h1 className='logo'>Navegue </h1> */}
                     </div>
+                </Box>
+
+                <Box 
+                styleSheet={{
+                    width: '100vw',
+                    height: '100vh',
+                    position: 'absolute',
+                    zIndex: '50',
+                    backgroundColor: appConfig.theme.colors.primary['800'],
+                }}
+                >
+
 
                 </Box>
 
@@ -55,7 +69,6 @@ function HomePage() {
                     position: 'absolute', bottom: '0',
                 }} />
             </div>
-
             <style jsx>{Background}</style>
             <style jsx>{Logo}</style>
         </>

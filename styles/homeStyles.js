@@ -17,6 +17,7 @@ export const Background = css`
         position: absolute;
         bottom: 0;
         background-color: ${appConfig.theme.colors.primary['800']};
+        z-index: -1;
     }
 
     @media (min-width: 768px) {
@@ -30,7 +31,7 @@ export const Background = css`
 export const Logo = css`
     .logo-wrap {
         z-index: 20;
-        padding: 1rem;
+        padding: 1.25rem;
     }
     .logo {
         font-size: 3rem;

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import logo from '../assets/svg/logo.svg';
 import { AnimationBox } from '../src/components/zamiAnimations/index';
 import appConfig from '../config.json';
-import Wave from '../assets/svg/waveSvg';
+import WaveBottom from '../assets/svg/waveSvg';
 
 // xs: 'linear-gradient(#21296C, #0032F4)',
 // md: 'linear-gradient(#21296C, #161853)',
@@ -15,31 +15,34 @@ function HomePage() {
             {/* <Box
             styleSheet={{
                 backgroundColor: {
-                xs: appConfig.theme.colors.neutrals['000'],
+                xs: appConfig.theme.colors.neutrals['200'],
                 },
+                height: '100vh',
             }}
             >
             </Box> */}
            
-            {/* <div className='bg-container'> */}
-                <Wave 
+            <div className='bg-container'>
+                <WaveBottom 
                 styleSheet={{
                     position: 'absolute',
                     bottom: '0',
                 }} />
-                {/* <div className='quadrado'></div> */}
-            {/* </div> */}
+            </div>
 
             <style jsx>{`
                 .bg-container {
-                    background-color: #21296C;
-                    position: relative;
-                    height: 50vh;
-                }
-                .quadrado {
-                    height: 50vh;
+                    height: 60vh;
                     width: 100%;
-                    background-color: #21296C;
+                    position: absolute;
+                    bottom: 0;
+                    background-color: #101F41;
+                }
+
+                @media (min-width: 768px) {
+                    .bg-container {
+                        height: inherit;
+                    }
                 }
             `}</style>
         </>

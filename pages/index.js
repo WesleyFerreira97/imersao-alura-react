@@ -12,32 +12,30 @@ import { useRouter } from 'next/router';
 
 function HomePage() {
     const [username, setUsername] = useState('wesleyferreira97');
-    const [isValid, setIsValid] = useState(true);
-    const [submit, setSubmit] = useState(false);
-    const [route, setRoute] = useState(false);
+    const [isValid, setIsValid] = useState();
+    const [goRoute, setGoRoute] = useState(false);
     const roteamento = useRouter();
 
     async function validateRoute(user) {
-        await fetch(`https://api.github.com/users/${user}`)
+        // await fetch(`https://api.github.com/users/${user}`)
+        await fetch(`https://swapi.dev/api/${user}`)
             .then(response => {
-                if (response.status === 404) {
-                    // console.log('Usuário não encontrado');
-                    setIsValid(false);
-                    return isValid;
+                if (response.ok) {
+                    console.log('response ok', response);
+                    setIsValid(true);
+                    return;
                 }
-                setIsValid(true);
-                return isValid;
+                console.log('response ok', response);
+                setIsValid(false);
             }) .catch (err => {
-                    alert('Erro na requisição');
+                alert('Erro na requisição');
             });
 
-            return console.log('retorno do validate');
+            return setIsValid(false);
     }
 
     useEffect(() => {
-        // console.log('useeffect', isValid);
-        // setIsValid(oldValue => !oldValue);
-        if(isValid) {
+        if(isValid == true) {
             roteamento.push(`/chat?username=${username}`);
             setIsValid(false);
         }
@@ -86,6 +84,7 @@ function HomePage() {
                 onSubmit={(e) => {
                     e.preventDefault();
                     validateRoute(username)
+                    setGoRoute(true);
                 }}
                 styleSheet={{
                     height: '100vh', width: '100vw',

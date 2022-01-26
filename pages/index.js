@@ -9,6 +9,8 @@ import WaveTop from '../assets/svg/waveTopSvg';
 import { Background, Logo, LoginWrap } from '../styles/homeStyles';
 import { useRouter } from 'next/router';
 
+// Impedir submit com 2 caracteres apenas
+// Criar um clone do whatsapp web na pagina de chat
 
 function HomePage() {
     const [username, setUsername] = useState('people');
@@ -17,8 +19,8 @@ function HomePage() {
     const roteamento = useRouter();
 
     async function validateRoute(user) {
-        // await fetch(`https://api.github.com/users/${user}`)
-        await fetch(`https://swapi.dev/api/${user}`)
+        await fetch(`https://api.github.com/users/${user}`)
+        // await fetch(`https://swapi.dev/api/${user}`)
             .then(response => {
                 console.log(response);
                 if (response.status == 200) {
@@ -26,47 +28,47 @@ function HomePage() {
                     return;
                 }
                 setIsValid(false);
-            }) .catch (err => {
+            }).catch(err => {
                 console.log('Erro na requisição');
             });
-            return
+        return
     }
 
     useEffect(() => {
         console.log(isValid, 'Use effect go route');
-        if(isValid == true && submitted == true) {
+        if (isValid == true && submitted == true) {
             return roteamento.push(`/chat?username=${username}`);
         }
-        
+
     }, [isValid, submitted]);
 
     return (
         <>
             <Box
-            styleSheet={{
-                height: '100vh',
-                display: 'flex',
-                justifyContent: 'center',
-                color: '#fff',
-                position: 'relative',
-                // zIndex: '1',
-            }}
-            >
-                <Box 
-                styleSheet={{   
-                    width: {
-                        xs: '100%',
-                        // md: '30%',
-                    },
-                    height: {
-                        xs: '19vh',
-                        md: '22%',
-                    },
-                    backgroundColor: appConfig.theme.colors.primary['500'],
-                    overflow: 'hidden',
+                styleSheet={{
+                    height: '100vh',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    color: '#fff',
                     position: 'relative',
-                    zIndex: '1',
-                }} >
+                    // zIndex: '1',
+                }}
+            >
+                <Box
+                    styleSheet={{
+                        width: {
+                            xs: '100%',
+                            // md: '30%',
+                        },
+                        height: {
+                            xs: '19vh',
+                            md: '22%',
+                        },
+                        backgroundColor: appConfig.theme.colors.primary['500'],
+                        overflow: 'hidden',
+                        position: 'relative',
+                        zIndex: '1',
+                    }} >
                     <div className='logo-wrap'>
                         <h1 className='logo'>Aluracord</h1>
                         {/* <h1 className='logo'>Navegue </h1> */}
@@ -75,22 +77,22 @@ function HomePage() {
                         position: 'absolute', bottom: '0',
                         zIndex: '-1',
                     }} />
-                    
+
                 </Box>
 
-                <Box 
-                as="form"
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    validateRoute(username)
-                    setSubmitted(true);
-                }}
-                styleSheet={{
-                    height: '100vh', width: '100vw',
-                    display: 'flex', justifyContent: 'center', alignItems: 'center',
-                    position: 'absolute',
-                    zIndex: '1',
-                }} >
+                <Box
+                    as="form"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        validateRoute(username)
+                        setSubmitted(true);
+                    }}
+                    styleSheet={{
+                        height: '100vh', width: '100vw',
+                        display: 'flex', justifyContent: 'center', alignItems: 'center',
+                        position: 'absolute',
+                        zIndex: '1',
+                    }} >
                     <div className='login'>
                         <div className='login-wrap'>
                             <div className='login-form'>
@@ -98,7 +100,7 @@ function HomePage() {
                                 <TextField
                                     label="Login"
                                     fullWidth
-                                    onChange={function noRefCheck(event){
+                                    onChange={function noRefCheck(event) {
                                         setUsername(event.target.value);
                                         validateRoute(event.target.value);
                                     }}
@@ -108,25 +110,25 @@ function HomePage() {
                                     placeholder="Usuário"
                                     textFieldColors={{
                                         neutral: {
-                                        textColor: appConfig.theme.colors.neutrals[100],
-                                        mainColor: appConfig.theme.colors.primary[900],
-                                        mainColorHighlight: appConfig.theme.colors.primary[500],
-                                        backgroundColor: appConfig.theme.colors.primary[900],
+                                            textColor: appConfig.theme.colors.neutrals[100],
+                                            mainColor: appConfig.theme.colors.primary[900],
+                                            mainColorHighlight: appConfig.theme.colors.primary[500],
+                                            backgroundColor: appConfig.theme.colors.primary[900],
                                         },
                                     }}
                                     value={username}
                                 />
                                 {isValid == false && <p className='login-form__error'>Usuário não encontrado</p>}
                                 <Button
-                                type='submit'
-                                label='Entrar'
-                                fullWidth
-                                buttonColors={{
-                                    contrastColor: appConfig.theme.colors.neutrals["000"],
-                                    mainColor: appConfig.theme.colors.primary[500],
-                                    mainColorLight: appConfig.theme.colors.primary[400],
-                                    mainColorStrong: appConfig.theme.colors.primary[600],
-                                }}
+                                    type='submit'
+                                    label='Entrar'
+                                    fullWidth
+                                    buttonColors={{
+                                        contrastColor: appConfig.theme.colors.neutrals["000"],
+                                        mainColor: appConfig.theme.colors.primary[500],
+                                        mainColorLight: appConfig.theme.colors.primary[400],
+                                        mainColorStrong: appConfig.theme.colors.primary[600],
+                                    }}
                                 />
                             </div>
                             <div className='login-image'>

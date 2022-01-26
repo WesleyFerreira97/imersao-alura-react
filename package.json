@@ -15,5 +15,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "devDependencies": {
+    "@styled-jsx/plugin-sass": "^4.0.2",
+    "sass": "^1.49.0"
   }
 }

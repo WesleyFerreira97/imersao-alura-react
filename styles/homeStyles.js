@@ -61,6 +61,11 @@ export const LoginWrap = css`
         justify-content: flex-start;
         margin-top: 1rem;
     }
+
+    button span{
+        font-size: 3rem !important;
+    }
+
     .login-title {
         font-size: 2.5rem;
         font-family: 'Maven Pro', sans-serif;
@@ -72,6 +77,8 @@ export const LoginWrap = css`
         order: -1;
         /* background-color: ${appConfig.theme.colors.primary['600']}; */
     }
+
+
     .login-image img {
         width: 80%;
         height: 80%;
@@ -82,6 +89,10 @@ export const LoginWrap = css`
         .login {
             width: 60vw;
             flex-direction: row;
+        }
+
+        .login-wrap {
+            width: 50%;
         }
         
     }

@@ -11,35 +11,34 @@ import { useRouter } from 'next/router';
 
 
 function HomePage() {
-    const [username, setUsername] = useState('wesleyferreira97');
+    const [username, setUsername] = useState('people');
     const [isValid, setIsValid] = useState();
-    const [goRoute, setGoRoute] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
     const roteamento = useRouter();
 
     async function validateRoute(user) {
         // await fetch(`https://api.github.com/users/${user}`)
         await fetch(`https://swapi.dev/api/${user}`)
             .then(response => {
-                if (response.ok) {
-                    console.log('response ok', response);
+                console.log(response);
+                if (response.status == 200) {
                     setIsValid(true);
                     return;
                 }
-                console.log('response ok', response);
                 setIsValid(false);
             }) .catch (err => {
-                alert('Erro na requisição');
+                console.log('Erro na requisição');
             });
-
-            return setIsValid(false);
+            return
     }
 
     useEffect(() => {
-        if(isValid == true) {
-            roteamento.push(`/chat?username=${username}`);
-            setIsValid(false);
+        console.log(isValid, 'Use effect go route');
+        if(isValid == true && submitted == true) {
+            return roteamento.push(`/chat?username=${username}`);
         }
-    }, [isValid]);
+        
+    }, [isValid, submitted]);
 
     return (
         <>
@@ -60,7 +59,7 @@ function HomePage() {
                         // md: '30%',
                     },
                     height: {
-                        xs: '17vh',
+                        xs: '19vh',
                         md: '22%',
                     },
                     backgroundColor: appConfig.theme.colors.primary['500'],
@@ -84,7 +83,7 @@ function HomePage() {
                 onSubmit={(e) => {
                     e.preventDefault();
                     validateRoute(username)
-                    setGoRoute(true);
+                    setSubmitted(true);
                 }}
                 styleSheet={{
                     height: '100vh', width: '100vw',
@@ -96,27 +95,28 @@ function HomePage() {
                         <div className='login-wrap'>
                             <div className='login-form'>
                                 <h1 className='login-form__title'>{username}</h1>
-                                {isValid == false && <p className='login-form__error'>Usuário não encontrado</p>}
                                 <TextField
-                                label="Login"
-                                fullWidth
-                                onChange={function noRefCheck(event){
-                                    setUsername(event.target.value);
-                                }}
-                                styleSheet={{
-                                    margin: '1rem 0',
-                                }}
-                                placeholder="Usuário"
-                                textFieldColors={{
-                                    neutral: {
-                                    textColor: appConfig.theme.colors.neutrals[100],
-                                    mainColor: appConfig.theme.colors.primary[900],
-                                    mainColorHighlight: appConfig.theme.colors.primary[500],
-                                    backgroundColor: appConfig.theme.colors.primary[900],
-                                    },
-                                }}
-                                value={username}
+                                    label="Login"
+                                    fullWidth
+                                    onChange={function noRefCheck(event){
+                                        setUsername(event.target.value);
+                                        validateRoute(event.target.value);
+                                    }}
+                                    styleSheet={{
+                                        margin: '1rem 0',
+                                    }}
+                                    placeholder="Usuário"
+                                    textFieldColors={{
+                                        neutral: {
+                                        textColor: appConfig.theme.colors.neutrals[100],
+                                        mainColor: appConfig.theme.colors.primary[900],
+                                        mainColorHighlight: appConfig.theme.colors.primary[500],
+                                        backgroundColor: appConfig.theme.colors.primary[900],
+                                        },
+                                    }}
+                                    value={username}
                                 />
+                                {isValid == false && <p className='login-form__error'>Usuário não encontrado</p>}
                                 <Button
                                 type='submit'
                                 label='Entrar'

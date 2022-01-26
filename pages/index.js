@@ -4,36 +4,60 @@ import logo from '../assets/svg/logo.svg';
 import { AnimationBox } from '../src/components/zamiAnimations/index';
 import appConfig from '../config.json';
 import WaveBottom from '../assets/svg/waveSvg';
-import { BackgroundBottom } from '../styles/homeStyles';
+import WaveTop from '../assets/svg/waveTopSvg';
+import { Background, Logo } from '../styles/homeStyles';
 
-// xs: 'linear-gradient(#21296C, #0032F4)',
-// md: 'linear-gradient(#21296C, #161853)',
-{/* <Image src={logo} className='logo-container'></Image> */}
 
 function HomePage() {
     return (
         <>
+        <div className='bg-overall'></div>
             <Box
             styleSheet={{
                 height: '100vh',
-                zIndex: 1,
                 display: 'flex',
-                alignItems: 'flex-end',
+                zIndex: -1,
                 color: '#fff',
             }}
             >
-                xfsfsdfsfd
+                <Box 
+                styleSheet={{   
+                    width: {
+                        xs: '100%',
+                        // md: '30%',
+                    },
+                    height: {
+                        xs: '20vh',
+                        md: '27%',
+                    },
+                    backgroundColor: appConfig.theme.colors.primary['300'],
+                    overflow: 'hidden',
+                    position: 'relative',
+                    zIndex: -1,
+                }} >
+                    <WaveTop styleSheet={{
+                        position: 'absolute', bottom: '0',
+                        zIndex: -1,
+                    }} />
+                    <div className='logo-wrap'>
+                        <h1 className='logo'>Aluracord</h1>
+                        {/* <h1 className='logo'>Navegue </h1> */}
+                    </div>
+
+                </Box>
+
             </Box>
-           
-            <div className='bg-container' colorr={appConfig.theme.colors.primary['300']}>
-                <WaveBottom 
-                styleSheet={{
-                    position: 'absolute',
-                    bottom: '0',
+
+
+
+            <div className='footer-wave'>
+                <WaveBottom styleSheet={{
+                    position: 'absolute', bottom: '0',
                 }} />
             </div>
 
-            <style jsx>{BackgroundBottom}</style>
+            <style jsx>{Background}</style>
+            <style jsx>{Logo}</style>
         </>
     )
 }

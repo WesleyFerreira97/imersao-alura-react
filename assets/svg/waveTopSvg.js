@@ -4,7 +4,7 @@ import appConfig from '../../config.json';
 export default function WaveTop(props) {
   const colorShapeReverse = props.color || appConfig.theme.colors.neutrals['200'];
   const colorShapeInner = props.color || appConfig.theme.colors.neutrals['400'];
-  const colorShapePrincipal = props.color || appConfig.theme.colors.primary['300'];
+  const colorShapePrincipal = props.color || appConfig.theme.colors.primary['500'];
   const styleSheet = props.styleSheet || {};
 
   return (

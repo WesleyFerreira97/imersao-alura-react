@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Box, TextField, Button } from '@skynexui/components';
 import Image from 'next/image';
 import logo from '../assets/svg/logo.svg';
-import { AnimationBox } from '../src/components/zamiAnimations/index';
+import { AnimationBox } from '../src/components/Animations/index';
 import appConfig from '../config.json';
 import WaveBottom from '../assets/svg/waveSvg';
 import WaveTop from '../assets/svg/waveTopSvg';
@@ -22,7 +22,6 @@ function HomePage() {
         await fetch(`https://api.github.com/users/${user}`)
         // await fetch(`https://swapi.dev/api/${user}`)
             .then(response => {
-                console.log(response);
                 if (response.status == 200) {
                     setIsValid(true);
                     return;
@@ -35,7 +34,6 @@ function HomePage() {
     }
 
     useEffect(() => {
-        console.log(isValid, 'Use effect go route');
         if (isValid == true && submitted == true) {
             return roteamento.push(`/chat?username=${username}`);
         }

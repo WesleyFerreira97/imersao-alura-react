@@ -1,5 +1,5 @@
 import React from 'react';
-import KeyFrames from './keyframes';
+import { KeyFrames } from './keyframes';
 
 export function AnimationBox(props) {
     const Tag = props.tag || 'div';
@@ -20,7 +20,7 @@ export function AnimationBox(props) {
     };
     
     const obj = Object.assign({}, styleSheetDefault, props.styleSheet);
-    console.log(props);
+
     return (
         <>
             <KeyFrames />
@@ -31,7 +31,3 @@ export function AnimationBox(props) {
   );
 }
 
-
-// 051124
-// 3156ed azul claro
-// 101f41 azul escuro

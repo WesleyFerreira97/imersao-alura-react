@@ -1,6 +1,7 @@
-export default function KeyFrames() {
-    return (
-      <style jsx>{`
+import css from 'styled-jsx/css';
+
+
+export const KeyFrames = css`
       @keyframes animationBox {
           to {
            transform: translateX(50px);
@@ -75,6 +76,4 @@ export default function KeyFrames() {
         }
       }
       
-   `}</style>
-    );
-}
+`;

@@ -33,12 +33,11 @@ export const Background = css`
         &__wrap {
             height: 95%;
             width: 95%;
-            background-color: ${appConfig.theme.colors.primary['800']};
             display: flex;
             flex-direction: column;
+            position: relative;
             overflow: hidden;
-            /* display: grid;
-            grid-template-columns: 1fr 1fr; */
+            background-color: ${appConfig.theme.colors.primary['800']};
         }
 
         &__sidebar {
@@ -54,7 +53,6 @@ export const Background = css`
                overflow: hidden;
                background-color: ${appConfig.theme.colors.primary['700']};
                padding: 1.25rem;
-               /* border-radius: 5px 50px 5px; */
             }
 
             &-tabs {
@@ -68,24 +66,38 @@ export const Background = css`
                     white-space: nowrap;
                     transition: transform 0.3s;
                     height: 100%;
-                    /* } */
 
-                    & > * {
-                        height: 100%;
-                        /* width: 100%;
-                        display: inline-flex;
-                        white-space: normal; */
-                        border: 2px solid red;
-                        overflow: hidden;
+                        & > * {
+                            height: 100%;
+                            /* width: 100%;
+                            display: inline-flex;
+                            white-space: normal; */
+                            overflow-y: scroll;
+
+                            ::-webkit-scrollbar {
+                                width: 10px;
+                            }
+                            
+                            ::-webkit-scrollbar-track {
+                                background-color: #ebebeb;
+                                -webkit-border-radius: 10px;
+                                border-radius: 10px;
+                            }
+
+                            ::-webkit-scrollbar-thumb {
+                                -webkit-border-radius: 10px;
+                                border-radius: 10px;
+                                background: #6d6d6d; 
+                            }
+                        }
+                        
                     }
-                    }
-       
+/*        
+                    &-contacts {
+                        over
+                    } */
                 }
             }
-        }
-
-        &__content {	
-            background-color: ${appConfig.theme.colors.primary['300']};
         }
     }
 
@@ -172,3 +184,42 @@ export const Background = css`
 `;
 
  
+
+
+export const ChatContent = css`
+    .chat__content {
+        height: 100%;
+        width: 100%;
+        position: relative; 
+        /* Temporario 
+            Mobile - Absolute é disparado por click 
+            Desktop - Absolute é removido
+        */
+        
+
+        &-wrap {
+            height: 100%;
+            width: 100%;
+            background-color: ${appConfig.theme.colors.primary['800']};
+            transform: translateY(100%);
+            transition: transform 0.5s;
+            /*  Temporario
+                Mobile - transform: translateY(100%);
+                Desktop - Remove transform
+             */
+        }
+    }
+
+    @media (min-width: ${appConfig.theme.breakpoints.lg}) {
+        .chat__content {
+            position: relative !important;
+
+            &-wrap {
+                transform: translateY(0);
+            }
+        }
+    }
+`;
+
+
+

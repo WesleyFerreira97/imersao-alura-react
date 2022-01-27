@@ -6,6 +6,7 @@ export default function Chat(props) {
     const user = router.query.username;
     const [userData, setUserData] = useState({});
     const [flowers, setFlowers] = useState([]);
+    const [indexTab, setIndexTab] = useState(0);
 
     useEffect(() => {
         async function queryUser() {
@@ -36,22 +37,36 @@ export default function Chat(props) {
                 <div className='chat__wrap'>
                     <div className='chat__sidebar'>
                         <div className='chat__sidebar-header'>
-                            <div className='chat__sidebar-header--wrap'>
+                            <div className='header__wrap'>
                                 <img className='header__image' src={userData.avatar_url} alt={userData.login} />
                                 <h3 className='header__username'>{userData.name}</h3>
                             </div>
-                            <div className='header__search'>
+                            {/* <div className='header__search'>
+                                <input type={'text'} placeholder={'Search'} />
+                            </div> */}
+                            <div className='header__tabs'>
+                                <li className='tabs__item' onClick={() => setIndexTab(0)}><span>Followers</span></li>
+                                <li className='tabs__item' onClick={() => setIndexTab(1)}><span>Following</span></li>
+                                <li className='tabs__item' onClick={() => setIndexTab(2)}><span>Info</span></li>
                             </div>
                         </div>
-                        <div className="chat__sidebar-list">
-                            {flowers.map(flower => {
-                                return (
-                                    <div className='card-list' key={flower.id}>
-                                        <div>{flower.login}</div>
-                                        <div>{flower.location}</div>
-                                    </div>
-                                )
-                            } )}
+                        <div className="chat__sidebar-tabs">
+                            <div className='container-wrap' style={{transform: `translateX(-${indexTab * 100}%)`}}>
+                                <div className='container-contacts'>
+                                    {flowers.map(flower => {
+                                        return (
+                                            <div className='card-list' key={flower.id}>
+                                                <div>{flower.login}</div>
+                                                <div>{flower.location}</div>
+                                            </div>
+                                        )
+                                    } )}
+                                </div>
+                                <div className='container-settings'>a
+                                </div>
+                                <div className='container-other'>w
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='chat__content'>

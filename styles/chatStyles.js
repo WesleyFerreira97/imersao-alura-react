@@ -36,26 +36,49 @@ export const Background = css`
             background-color: ${appConfig.theme.colors.primary['800']};
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            /* display: grid;
+            grid-template-columns: 1fr 1fr; */
         }
 
         &__sidebar {
-            flex: 1 1 10%;
             background-color: ${appConfig.theme.colors.neutrals['400']};
+            height: 100%;
 
             &-header {
                height: 20%;
                width: 100%;
-                /* border-radius: 5px 50px 5px; */
+               display: flex;
+               align-items: center;
+               position: relative;
+               overflow: hidden;
+               background-color: ${appConfig.theme.colors.primary['700']};
+               padding: 1.25rem;
+               /* border-radius: 5px 50px 5px; */
+            }
+
+            &-tabs {
+                height: 80%;
+                width: 100%;
                 overflow: hidden;
-                display: flex;
-                align-items: center;
-                padding: 1.25rem;
-                background-color: ${appConfig.theme.colors.primary['700']};
+
+                .container-wrap {
+                    white-space: nowrap;
+                    transition: transform 0.3s;
+                    height: 100%;
+
+                    & > * {
+                        height: 100%;
+                        width: 100%;
+                        display: inline-flex;
+                        white-space: normal;
+                        border: 2px solid red;
+                    }
+                }
             }
         }
 
         &__content {	
-            flex: 3 1 90%;
             background-color: ${appConfig.theme.colors.primary['300']};
         }
     }
@@ -65,6 +88,7 @@ export const Background = css`
         &__wrap {
             display: flex;
             align-items: center;
+            margin-bottom: 2rem;
         }
 
         &__image {
@@ -80,9 +104,48 @@ export const Background = css`
             color: ${appConfig.theme.colors.neutrals['000']};
             margin-left: 1.25rem;
         }
+
+        &__search {
+            height: 30%;
+            width: 100%;
+            background-color: ${appConfig.theme.colors.primary['800']};
+            /* position: absolute;
+            left: 0;
+            bottom: 0; */
+        }
+
+        &__tabs {
+            height: 30%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: ${appConfig.theme.colors.primary['800']};
+            padding-left: 1.25rem;
+            
+            .tabs__item {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 1rem;
+                color: ${appConfig.theme.colors.neutrals['000']};
+                font-family: 'Maven Pro', sans-serif;
+                font-size: .8rem;
+
+                &:hover {
+                    background: ${appConfig.theme.colors.neutrals['500']};
+                    color: ${appConfig.theme.colors.primary['800']};
+                }
+            }
+        }
+
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: ${appConfig.theme.breakpoints.lg}) {
 
         .chat {
 
@@ -101,6 +164,7 @@ export const Background = css`
             }
         }
     }
+
 `;
 
  

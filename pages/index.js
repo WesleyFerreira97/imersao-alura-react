@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 // Criar um clone do whatsapp web na pagina de chat
 
 function HomePage() {
-    const [username, setUsername] = useState('people');
+    const [username, setUsername] = useState('wesleyferreira97');
     const [isValid, setIsValid] = useState();
     const [submitted, setSubmitted] = useState(false);
     const roteamento = useRouter();
@@ -137,10 +137,7 @@ function HomePage() {
                         </div>
                     </div>
                 </Box>
-
             </Box>
-
-
 
             <div className='footer-wave'>
                 <WaveBottom styleSheet={{

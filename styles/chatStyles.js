@@ -62,18 +62,24 @@ export const Background = css`
                 width: 100%;
                 overflow: hidden;
 
-                .container-wrap {
+                .container {
+                    
+                    &-wrap {
                     white-space: nowrap;
                     transition: transform 0.3s;
                     height: 100%;
+                    /* } */
 
                     & > * {
                         height: 100%;
-                        width: 100%;
+                        /* width: 100%;
                         display: inline-flex;
-                        white-space: normal;
+                        white-space: normal; */
                         border: 2px solid red;
+                        overflow: hidden;
                     }
+                    }
+       
                 }
             }
         }
@@ -109,9 +115,6 @@ export const Background = css`
             height: 30%;
             width: 100%;
             background-color: ${appConfig.theme.colors.primary['800']};
-            /* position: absolute;
-            left: 0;
-            bottom: 0; */
         }
 
         &__tabs {
@@ -145,6 +148,7 @@ export const Background = css`
 
     }
 
+
     @media (min-width: ${appConfig.theme.breakpoints.lg}) {
 
         .chat {
@@ -156,7 +160,7 @@ export const Background = css`
             }
 
             &__sidebar {
-                flex: 1 1 30%;
+                flex: 0 0 30%;
             }
 
             &__content {

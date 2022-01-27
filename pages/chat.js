@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Background } from '../styles/chatStyles';
+import { CardList } from '../src/components/cardList/index';
+
 export default function Chat(props) {
     const router = useRouter();
     const user = router.query.username;
@@ -51,16 +53,18 @@ export default function Chat(props) {
                             </div>
                         </div>
                         <div className="chat__sidebar-tabs">
-                            <div className='container-wrap' style={{transform: `translateX(-${indexTab * 100}%)`}}>
+                            <div className='container-wrap' style={{transform: `translateY(-${indexTab * 100}%)`}}>
                                 <div className='container-contacts'>
-                                    {flowers.map(flower => {
+                                    {console.log(flowers)}
+                                    <CardList ListItems={flowers} />
+                                    {/* {flowers.map(flower => {
                                         return (
                                             <div className='card-list' key={flower.id}>
                                                 <div>{flower.login}</div>
                                                 <div>{flower.location}</div>
                                             </div>
                                         )
-                                    } )}
+                                    } )} */}
                                 </div>
                                 <div className='container-settings'>a
                                 </div>
@@ -80,3 +84,6 @@ export default function Chat(props) {
 
     );
 }
+
+
+

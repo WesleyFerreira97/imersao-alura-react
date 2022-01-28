@@ -20,7 +20,9 @@ export const Background = css`
             transform: rotate(-35deg);
         }
     }
+`;
 
+export const ChatStyles = css`
     .chat {
         height: 100%;
         width: 100%;
@@ -92,10 +94,6 @@ export const Background = css`
                         }
                         
                     }
-/*        
-                    &-contacts {
-                        over
-                    } */
                 }
             }
         }
@@ -160,7 +158,6 @@ export const Background = css`
 
     }
 
-
     @media (min-width: ${appConfig.theme.breakpoints.lg}) {
 
         .chat {
@@ -183,9 +180,6 @@ export const Background = css`
 
 `;
 
- 
-
-
 export const ChatContent = css`
     .chat__content {
         height: 100%;
@@ -195,7 +189,6 @@ export const ChatContent = css`
             Mobile - Absolute é disparado por click 
             Desktop - Absolute é removido
         */
-        
 
         &-wrap {
             height: 100%;

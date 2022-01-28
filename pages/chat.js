@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Background, ChatContent } from '../styles/chatStyles';
+import { Background, ChatContent, ChatStyles } from '../styles/chatStyles';
 import { CardList } from '../src/components/cardList/index';
 import { AnimationBox } from '../src/components/Animations/index';
 import { queryUser } from '../services/apiGitHub';
+import { ChatContainer } from '../src/components/chatContainer/index';
 
 export default function Chat() {
     const router = useRouter();
     const user = router.query.username;
     const [indexTab, setIndexTab] = useState(0);
-
+    const [mobileOpenChat, setMobileOpenChat] = useState(false);
+    
     const [userData, setUserData] = useState({});
     const [following, setFollowing] = useState([]);
     const [followers, setFollowers] = useState([]);
-    const [mobileOpenChat, setMobileOpenChat] = useState(false);
 
     const [currentContact, setCurrentContact] = useState('');
     const [currentUserData, setCurrentUserData] = useState([]);
@@ -32,19 +33,19 @@ export default function Chat() {
         });
     }, [userData]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        queryUser(user, 'followers').then(data => {
-            setFollowers(data);
-        });
-    }, [userData]);
+    //     queryUser(user, 'followers').then(data => {
+    //         setFollowers(data);
+    //     });
+    // }, [userData]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        queryUser(currentContact).then(data => {
-            setCurrentUserData(data);
-        });
-    }, [currentContact]);
+    //     queryUser(currentContact).then(data => {
+    //         setCurrentUserData(data);
+    //     });
+    // }, [currentContact]);
 
     return (
         <>
@@ -72,10 +73,10 @@ export default function Chat() {
                                     <CardList ListItems={following} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
                                 </div>
                                 <div className='container-settings'>
-                                    <CardList ListItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
+                                    {/* <CardList ListItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} /> */}
                                 </div>
                                 <div className='container-other'>
-                                    <CardList ListItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
+                                    {/* <CardList ListItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} /> */}
                                 </div>
                             </div>
                         </div>
@@ -83,10 +84,8 @@ export default function Chat() {
                     <div className='chat__content' style={{position: mobileOpenChat ? 'absolute' : ''}}>
                         <div className='chat__content-wrap' 
                         style={{transform: mobileOpenChat ? 'translateY(0)' : ''}}
-                        >⠀
-                            
-                            {/* {console.log(currentUserData)} */}
-                            {currentUserData.login}
+                        >
+                            <ChatContainer contactData={currentUserData} />
                         </div>
                     </div>
                 </div>
@@ -95,6 +94,7 @@ export default function Chat() {
 
         <style jsx>{Background}</style>
         <style jsx>{ChatContent}</style>
+        <style jsx>{ChatStyles}</style>
         </>
 
     );

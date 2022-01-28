@@ -6,6 +6,9 @@ import { AnimationBox } from '../src/components/Animations/index';
 import { queryUser } from '../services/apiGitHub';
 import { ChatContainer } from '../src/components/chatContainer/index';
 
+
+
+
 export default function Chat() {
     const router = useRouter();
     const user = router.query.username;

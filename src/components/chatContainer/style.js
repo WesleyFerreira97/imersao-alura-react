@@ -84,6 +84,14 @@ export const ChatStyle = css`
                 margin-right: .5rem;
             }
         }
+
+        .chat-content__message {
+
+            li {
+                color: ${appConfig.theme.colors.neutrals['100']};
+                padding: .25rem;
+            }
+        }
     }
 
 `;

@@ -8,65 +8,43 @@ import { queryUser } from '../services/apiGitHub';
 export default function Chat() {
     const router = useRouter();
     const user = router.query.username;
+    const [indexTab, setIndexTab] = useState(0);
+
     const [userData, setUserData] = useState({});
     const [following, setFollowing] = useState([]);
     const [followers, setFollowers] = useState([]);
-    const [indexTab, setIndexTab] = useState(0);
     const [mobileOpenChat, setMobileOpenChat] = useState(false);
-    const [currentUser, setCurrentUser] = useState('');
+
+    const [currentContact, setCurrentContact] = useState('');
     const [currentUserData, setCurrentUserData] = useState([]);
-    queryUser(user).then(data => {
-        setUserData(data);
-    });
-    useEffect(() => {
-        // async function queryUser() {
-        //     const response = await fetch(`https://api.github.com/users/${user}`);
-        //     // const response = await fetch(`https://api.github.com/users/peas`);
-        //     const data = await response.json();
-        // }
-        // queryUser();
-
-    
-        
-
-    }, [router.query.username]);
 
     useEffect(() => {
-        async function queryFollowing() {
-            const response = await fetch(`https://api.github.com/users/wesleyferreira97/following`);
-            const data = await response.json();
-            
+
+        queryUser(user).then(data => {
+            setUserData(data);
+        });
+    }, [user]);
+
+    useEffect(() => {
+
+        queryUser(user, 'following').then(data => {
             setFollowing(data);
-        }
-
-        queryFollowing();
-
+        });
     }, [userData]);
 
     useEffect(() => {
-        async function queryFollowers() {
-            const response = await fetch(`https://api.github.com/users/wesleyferreira97/followers`);
-            const data = await response.json();
-            
+
+        queryUser(user, 'followers').then(data => {
             setFollowers(data);
-        }
-
-        queryFollowers();
-
+        });
     }, [userData]);
 
     useEffect(() => {
-        async function queryUser() {
-            if(currentUser) {
-                const response = await fetch(`https://api.github.com/users/${currentUser}`);
-                const data = await response.json();
-                
-                setCurrentUserData(data);
-            }
-        }
 
-        queryUser();
-    }, [currentUser]);
+        queryUser(currentContact).then(data => {
+            setCurrentUserData(data);
+        });
+    }, [currentContact]);
 
     return (
         <>
@@ -91,13 +69,13 @@ export default function Chat() {
                         <div className="chat__sidebar-tabs">
                             <div className='container-wrap' style={{transform: `translateY(-${indexTab * 100}%)`}}>
                                 <div className='container-contacts'>
-                                    <CardList ListItems={following} stateChat={setMobileOpenChat} setUser={setCurrentUser} />
+                                    <CardList ListItems={following} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
                                 </div>
                                 <div className='container-settings'>
-                                    <CardList ListItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentUser} />
+                                    <CardList ListItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
                                 </div>
                                 <div className='container-other'>
-                                    <CardList ListItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentUser} />
+                                    <CardList ListItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
                                 </div>
                             </div>
                         </div>
@@ -107,7 +85,7 @@ export default function Chat() {
                         style={{transform: mobileOpenChat ? 'translateY(0)' : ''}}
                         >⠀
                             
-                            {console.log(currentUserData)}
+                            {/* {console.log(currentUserData)} */}
                             {currentUserData.login}
                         </div>
                     </div>

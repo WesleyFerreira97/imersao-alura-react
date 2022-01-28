@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { ChatStyle } from './style';
+import { ChatStyle, ChatContent } from './style';
 import { AiOutlineSend } from "react-icons/ai";
 import { BsEmojiSmile } from "react-icons/bs";
-import { createClient } from "@supabase/supabase-js";
-
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzM0MDAyNiwiZXhwIjoxOTU4OTE2MDI2fQ.2nQ33SF-SqcD8fLMNEuTyNUB7Tr5iS_gwaKioUKJwPI';
-const SUPABASE_URL = 'https://rgyyvvjmrbvgtwlhifnp.supabase.co';
-const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+import { supaDb } from '../../../services/supadb';
 
 export function ChatContainer(props) {
+    const {login, avatar_url} = props.contactData;
     const [currentMessage, setCurrentMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    // const [messageList, setMessageList] = useState([]);
-
+    console.log(avatar_url, 'chat Container');
     useEffect(() => {
-        db.from('messages')
+        supaDb.from('messages')
             .select('*')
             .order('id', { ascending: false })
             .then(({data}) => {
@@ -29,7 +25,7 @@ export function ChatContainer(props) {
           text: newMessage,
         };
 
-        db
+        supaDb
           .from('messages')
           .insert([
             message
@@ -49,17 +45,18 @@ export function ChatContainer(props) {
             <div className='chat-container'>
                 <div className='chat-container__contact-info'>
                     <div className='contact-info__image'>
-                        {/* <img src={props.userData.avatar_url} alt={props.userData.login} /> */}
+                        <img src={avatar_url} alt={login} />
                     </div>
-                    <div className='contact-info__username'>
-                        Felipe Deshamps
-                    </div>
+                    <h3 className='contact-info__username'>
+                        {login}
+                    </h3>
                 </div>
                 <div className='chat-container__chat-content'>
                     <ul className='chat-content__message'>
                         {messages.map((message) => (
                                 <li key={message.id}>
-                                    {message.from}{message.text}
+                                    <span className='from'>{message.from} :</span>
+                                    <span className='text'>{message.text}</span>
                                 </li> 
                         ))}
                     </ul>
@@ -86,6 +83,7 @@ export function ChatContainer(props) {
                 </div>
             </div>
             <style jsx>{ChatStyle}</style>
+            <style jsx>{ChatContent}</style>
         </>
     );
 }

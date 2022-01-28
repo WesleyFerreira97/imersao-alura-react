@@ -6,9 +6,6 @@ import { AnimationBox } from '../src/components/Animations/index';
 import { queryUser } from '../services/apiGitHub';
 import { ChatContainer } from '../src/components/chatContainer/index';
 
-
-
-
 export default function Chat() {
     const router = useRouter();
     const user = router.query.username;
@@ -20,35 +17,35 @@ export default function Chat() {
     const [followers, setFollowers] = useState([]);
 
     const [currentContact, setCurrentContact] = useState('');
-    const [currentUserData, setCurrentUserData] = useState([]);
+    const [currentContactData, setCurrentContactData] = useState([]);
 
     useEffect(() => {
-
+        // Search current user
         queryUser(user).then(data => {
             setUserData(data);
         });
     }, [user]);
 
     useEffect(() => {
-
+        // Current user following
         queryUser(user, 'following').then(data => {
             setFollowing(data);
         });
     }, [userData]);
 
     // useEffect(() => {
-
+            // Current user followers
     //     queryUser(user, 'followers').then(data => {
     //         setFollowers(data);
     //     });
     // }, [userData]);
 
-    // useEffect(() => {
-
-    //     queryUser(currentContact).then(data => {
-    //         setCurrentUserData(data);
-    //     });
-    // }, [currentContact]);
+    useEffect(() => {
+        // Get current contact data
+        queryUser(currentContact).then(data => {
+            setCurrentContactData(data);
+        });
+    }, [currentContact]);
 
     return (
         <>
@@ -73,13 +70,13 @@ export default function Chat() {
                         <div className="chat__sidebar-tabs">
                             <div className='container-wrap' style={{transform: `translateY(-${indexTab * 100}%)`}}>
                                 <div className='container-contacts'>
-                                    <CardList ListItems={following} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
+                                    <CardList listItems={following} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
                                 </div>
                                 <div className='container-settings'>
-                                    {/* <CardList ListItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} /> */}
+                                    {/* <CardList listItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} /> */}
                                 </div>
                                 <div className='container-other'>
-                                    {/* <CardList ListItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} /> */}
+                                    {/* <CardList listItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} /> */}
                                 </div>
                             </div>
                         </div>
@@ -88,7 +85,7 @@ export default function Chat() {
                         <div className='chat__content-wrap' 
                         style={{transform: mobileOpenChat ? 'translateY(0)' : ''}}
                         >
-                            <ChatContainer contactData={currentUserData} />
+                            <ChatContainer contactData={currentContactData} />
                         </div>
                     </div>
                 </div>

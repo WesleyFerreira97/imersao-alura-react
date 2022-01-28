@@ -12,14 +12,23 @@ export const ChatStyle = css`
             width: 100%;
             display: flex;
             align-items: center;
-            padding: 1.25rem;
-            background-color: ${appConfig.theme.colors.primary['700']};
+            padding: 1.25rem 4rem;
+            background-color: ${appConfig.theme.colors.primary['800']};
+            border: 2px solid ${appConfig.theme.colors.primary['900']};
         }
 
         .contact-info__image {
-            height: 30px;
-            width: 30px;
-            border-radius: 100%;
+            height: 100%;
+            width: 100%px;
+            background-color: black;
+            margin-right: 1rem;
+
+            img {
+                height: 50px;
+                width: 50px;
+                object-fit: cover;
+                border-radius: 100%;
+            }
         }
 
         .contact-info__username {
@@ -27,12 +36,10 @@ export const ChatStyle = css`
             font-size: 1.25rem;
             font-family: 'Maven Pro', sans-serif;
             font-weight: 400;
+            text-transform: capitalize;
         }
 
-        &__chat-content {
-            height: 80%;
-            width: 100%;
-        }
+ 
 
         &__input-bar {
             height: 10%;
@@ -41,7 +48,8 @@ export const ChatStyle = css`
             align-items: center;
             justify-content: center;
             padding: 0 1rem;
-            background-color: ${appConfig.theme.colors.primary['700']};
+            background-color: ${appConfig.theme.colors.primary['900']};
+            box-shadow: 0px -1px 0px 0px ${appConfig.theme.colors.neutrals['100']};
         }
 
         .input-bar__input {
@@ -85,11 +93,46 @@ export const ChatStyle = css`
             }
         }
 
-        .chat-content__message {
+        
+    }
 
-            li {
-                color: ${appConfig.theme.colors.neutrals['100']};
-                padding: .25rem;
+`;
+
+
+export const ChatContent = css`
+    .chat-container__chat-content {
+        height: 80%;
+        width: 100%;
+        overflow-y: scroll;
+        padding-right: 2rem;
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background-color: #ebebeb;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background: #6d6d6d; 
+        }
+    }
+
+    .chat-content__message {
+        height: 50%;
+        margin-left: 4.5rem;
+
+        li {
+            color: ${appConfig.theme.colors.neutrals['100']};
+            padding: .75rem .25rem;
+
+            .from {
+                margin-right: 1rem;
             }
         }
     }

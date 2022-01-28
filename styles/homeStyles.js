@@ -3,14 +3,7 @@ import appConfig from '../config.json';
 
 export const Background = css`
 
-.footer-wave {
-        height: 77vh;
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        z-index: -1;
-        background-color: ${appConfig.theme.colors.primary['800']};
-    }
+
 
 `;
 

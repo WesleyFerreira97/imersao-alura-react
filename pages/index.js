@@ -71,11 +71,6 @@ function HomePage() {
                         <h1 className='logo'>Aluracord</h1>
                         {/* <h1 className='logo'>Navegue </h1> */}
                     </div>
-                    <WaveTop styleSheet={{
-                        position: 'absolute', bottom: '0',
-                        zIndex: '-1',
-                    }} />
-
                 </Box>
 
                 <Box
@@ -137,11 +132,7 @@ function HomePage() {
                 </Box>
             </Box>
 
-            <div className='footer-wave'>
-                <WaveBottom styleSheet={{
-                    position: 'absolute', bottom: '0',
-                }} />
-            </div>
+   
             <style jsx>{Background}</style>
             <style jsx>{Logo}</style>
             <style jsx>{LoginWrap}</style>

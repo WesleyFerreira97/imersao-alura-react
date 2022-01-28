@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, TextField, Button } from '@skynexui/components';
+import { Box, TextField, Button} from '@skynexui/components';
 import Image from 'next/image';
 import logo from '../assets/svg/logo.svg';
 import { AnimationBox } from '../src/components/Animations/index';
@@ -8,6 +8,9 @@ import WaveBottom from '../assets/svg/waveSvg';
 import WaveTop from '../assets/svg/waveTopSvg';
 import { Background, Logo, LoginWrap } from '../styles/homeStyles';
 import { useRouter } from 'next/router';
+import { FaUserCircle } from "react-icons/fa";
+import Particles from 'react-particles-js';
+
 
 // Impedir submit com 2 caracteres apenas
 // Criar um clone do whatsapp web na pagina de chat
@@ -40,6 +43,7 @@ function HomePage() {
 
     }, [isValid, submitted]);
 
+
     return (
         <>
             <Box
@@ -52,17 +56,12 @@ function HomePage() {
                     // zIndex: '1',
                 }}
             >
+                <Particles height="100vh" width="100vw" params={configParticles} />
                 <Box
                     styleSheet={{
-                        width: {
-                            xs: '100%',
-                            // md: '30%',
-                        },
-                        height: {
-                            xs: '19vh',
-                            md: '22%',
-                        },
-                        backgroundColor: appConfig.theme.colors.primary['500'],
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: appConfig.theme.colors.primary['400'],
                         overflow: 'hidden',
                         position: 'relative',
                         zIndex: '1',
@@ -89,7 +88,7 @@ function HomePage() {
                     <div className='login'>
                         <div className='login-wrap'>
                             <div className='login-form'>
-                                <h1 className='login-form__title'>{username}</h1>
+                                <h1 className='login-form__title'> {username.length > 2 ? username : ""}</h1>
                                 <TextField
                                     label="Login"
                                     fullWidth
@@ -118,14 +117,14 @@ function HomePage() {
                                     fullWidth
                                     buttonColors={{
                                         contrastColor: appConfig.theme.colors.neutrals["000"],
-                                        mainColor: appConfig.theme.colors.primary[500],
-                                        mainColorLight: appConfig.theme.colors.primary[400],
+                                        mainColor: appConfig.theme.colors.primary[900],
+                                        mainColorLight: appConfig.theme.colors.primary[900],
                                         mainColorStrong: appConfig.theme.colors.primary[600],
                                     }}
                                 />
                             </div>
                             <div className='login-image'>
-                                <img src={`https://github.com/${username}.png`} alt='user' />
+                                <img src={ username.length > 2 ? `https://github.com/${username}.png` : 'https://github.com/usere.png' } />
                             </div>
                         </div>
                     </div>

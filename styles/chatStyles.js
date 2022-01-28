@@ -99,6 +99,21 @@ export const ChatStyles = css`
         }
     }
 
+    
+    .container-other {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1rem;
+        white-space: normal;
+        
+        span {
+            padding-right: 1rem;
+            font-family: 'Maven Pro', sans-serif;
+            font-size: 1.3rem;
+        }
+
+    }
+
     .header {
 
         &__wrap {
@@ -170,11 +185,18 @@ export const ChatStyles = css`
 
             &__sidebar {
                 flex: 0 0 30%;
+                
             }
 
             &__content {
                 flex: 3 1 70%;
             }
+        }
+    }
+
+    @media (min-width: 992px) {
+        .chat__sidebar {
+            max-width: 30%;
         }
     }
 

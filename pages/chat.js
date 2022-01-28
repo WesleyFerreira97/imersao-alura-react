@@ -6,6 +6,7 @@ import { AnimationBox } from '../src/components/Animations/index';
 import { queryUser } from '../services/apiGitHub';
 import { ChatContainer } from '../src/components/chatContainer/index';
 
+
 export default function Chat() {
     const router = useRouter();
     const user = router.query.username;
@@ -33,12 +34,12 @@ export default function Chat() {
         });
     }, [userData]);
 
-    // useEffect(() => {
+    useEffect(() => {
             // Current user followers
-    //     queryUser(user, 'followers').then(data => {
-    //         setFollowers(data);
-    //     });
-    // }, [userData]);
+        queryUser(user, 'followers').then(data => {
+            setFollowers(data);
+        });
+    }, [userData]);
 
     useEffect(() => {
         // Get current contact data
@@ -54,7 +55,8 @@ export default function Chat() {
                 <div className='chat__wrap'>
                     <div className='chat__sidebar'>
                         <div className='chat__sidebar-header'>
-                            <div className='header__wrap'>
+                            <div className='header__wrap' onClick={() => setIndexTab(2)}>
+                                
                                 <img className='header__image' src={userData.avatar_url} alt={userData.login} />
                                 <h3 className='header__username'>{userData.name}</h3>
                             </div>
@@ -73,10 +75,13 @@ export default function Chat() {
                                     <CardList listItems={following} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
                                 </div>
                                 <div className='container-settings'>
-                                    {/* <CardList listItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} /> */}
+                                    <CardList listItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
                                 </div>
                                 <div className='container-other'>
-                                    {/* <CardList listItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} /> */}
+                                    <span className='bio'>Bio:  {userData.bio}</span>
+                                    <span className='company'>Company: {userData.company}</span>
+                                    <span className='location'>Location: {userData.location}</span>
+                                    <h3> Meu layout é perfeito, se bugar a culpa é da sua máquina</h3>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +90,7 @@ export default function Chat() {
                         <div className='chat__content-wrap' 
                         style={{transform: mobileOpenChat ? 'translateY(0)' : ''}}
                         >
-                            <ChatContainer contactData={currentContactData} />
+                            <ChatContainer contactData={currentContactData} toggleChat={setMobileOpenChat} />
                         </div>
                     </div>
                 </div>

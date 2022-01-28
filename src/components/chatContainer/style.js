@@ -20,14 +20,23 @@ export const ChatStyle = css`
         .contact-info__image {
             height: 100%;
             width: 100%px;
-            background-color: black;
             margin-right: 1rem;
+            display: flex;
+            align-items: center;
 
             img {
                 height: 50px;
                 width: 50px;
                 object-fit: cover;
                 border-radius: 100%;
+            }
+
+            .return-button {
+                color: white;
+                font-size: 2rem;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
             }
         }
 
@@ -39,7 +48,6 @@ export const ChatStyle = css`
             text-transform: capitalize;
         }
 
- 
 
         &__input-bar {
             height: 10%;

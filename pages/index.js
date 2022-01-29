@@ -21,6 +21,7 @@ export default function HomePage () {
             alignItems: 'center',
             flexDirection: 'column',
             overflow: 'hidden',
+            
         }} >
             <Particles options={particlesConfig} style={{position: 'absolute'}} />
             <Box 
@@ -40,9 +41,9 @@ export default function HomePage () {
             }}>
             <HeaderTheme />
             <LoginBox />
-            
             </Box>
         </Box>
+
 
         <style jsx>{Logo}</style>
 
@@ -50,7 +51,14 @@ export default function HomePage () {
             #tsparticles {
                 display: none;
             }
+
         `}</style>
        </>     
     )
 }
+
+
+// Versão mobile
+// Tirar Background color e filter do loginBox
+// Adicionar background com opacidade no box principal da home page 
+// Trocar cor de background do particle

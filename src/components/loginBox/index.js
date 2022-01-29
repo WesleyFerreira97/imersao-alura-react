@@ -59,12 +59,16 @@ export function LoginBox() {
             maxWidth: '350px',
             minWidth: '300px',
             width: {
-                // xs: '60%',
-                // md: '75%',
                 xs: '50%',
             },
-            backgroundColor: 'rgba(12, 23, 49, 0.4)',
-            backdropFilter: 'blur(6px)',
+            backgroundColor: {
+                xs: 'inherit',
+                md: 'rgba(12, 23, 49, 0.4)',
+            },
+            backdropFilter: {
+                xs: 'none',
+                md: 'blur(6px)',
+            },
             zIndex: '1',
             display: 'flex',
             flexDirection: 'column',
@@ -74,8 +78,8 @@ export function LoginBox() {
             overflow: 'hidden',
             // borderRadius: '1rem',
             order: {
-                // xs: '-1',
-                sm: '1',
+                xs: '1',
+                // sm: '1',
             },
             position: 'relative',
         }} >
@@ -143,6 +147,12 @@ export function LoginBox() {
                     height: 150px;
                     width: 150px;
                 }    
+                .login-form__error {
+                    margin: 1rem 0;
+                    color: #FF6B6B;
+                    font-weight: 500;
+                    font-family: 'Maven Pro', sans-serif;
+                }
             `}</style>
         </>
     );

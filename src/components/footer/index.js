@@ -7,7 +7,7 @@ export function Footer() {
         <Box 
         styleSheet={{
             position: 'absolute',
-            bottom: '1rem',
+            bottom: '2.5rem',
             display: 'flex',
             justifyContent: 'center',
         }} >
@@ -37,8 +37,14 @@ export function Footer() {
                     display: inline;
                     cursor: pointer;
 
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+
                     &:hover {
-                        background: black;
+                        background: ${appConfig.theme.colors.primary['800']};
+                        transition: .7s;
                     }
                 }
             `}</style>

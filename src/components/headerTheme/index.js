@@ -7,11 +7,7 @@ export function HeaderTheme() {
         <>
         <Box 
         styleSheet={{
-            width: '100%',
-            zIndex: '60',
-            position: 'absolute',
-            top: '0',
-            left: '0',
+            flexGrow: 1,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -25,10 +21,9 @@ export function HeaderTheme() {
                 fontFamily: 'Maven Pro',
                 fontSize: {
                     xs: '2rem',
-                    md: '3rem'
+                    md: '5rem'
                 },
                 fontWeight: '500',
-                
             }}>
                 Aluracord
             </Text>
@@ -36,7 +31,7 @@ export function HeaderTheme() {
             styleSheet={{
                 color: appConfig.theme.colors.neutrals['000'],
                 fontFamily: 'Maven Pro',
-                fontSize: '1rem',
+                fontSize: '1.5rem',
                 zIndex: '60',
                 marginTop: '.5rem',
             }}

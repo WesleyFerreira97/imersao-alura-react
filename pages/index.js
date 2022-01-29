@@ -7,7 +7,7 @@ import Particles from "react-tsparticles";
 import particlesConfig  from '../src/particles/particlesConfig'
 import { LoginBox } from '../src/components/loginBox';
 import { HeaderTheme } from '../src/components/headerTheme';
-import { Footer } from '../src/components/footer';
+
 
 export default function HomePage () {
     return (
@@ -20,14 +20,37 @@ export default function HomePage () {
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'column',
+            overflow: 'hidden',
         }} >
+            <Particles options={particlesConfig} style={{position: 'absolute'}} />
+            <Box 
+            styleSheet={{
+                height: '100%',
+                width: {
+                    xs: '90%',
+                    md: '80%',
+                },
+                position: 'absolute',
+                display: 'flex',
+                flexDirection: {
+                    xs: 'column',
+                    md: 'row',
+                },
+                alignItems: 'center',
+            }}>
             <HeaderTheme />
-            <Particles options={particlesConfig} />
             <LoginBox />
-            <Footer />  
+            
+            </Box>
         </Box>
 
         <style jsx>{Logo}</style>
+
+        <style jsx>{`
+            #tsparticles {
+                display: none;
+            }
+        `}</style>
        </>     
     )
 }

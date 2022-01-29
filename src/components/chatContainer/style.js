@@ -100,14 +100,12 @@ export const ChatStyle = css`
                 margin-right: .5rem;
             }
         }
-
-        
     }
-
 `;
 
 
 export const ChatContent = css`
+
     .chat-container__chat-content {
         height: 80%;
         width: 100%;
@@ -115,6 +113,10 @@ export const ChatContent = css`
         padding-right: 2rem;
         padding-bottom: 1rem;
         margin-bottom: .4rem;
+        display: flex;
+        flex-direction: column-reverse;
+        flex: 1;
+
         ::-webkit-scrollbar {
             width: 10px;
         }

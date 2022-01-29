@@ -4,7 +4,7 @@ import { ModalStyle } from './style';
 export function Modal(props) {
     return (
         <>
-        <div className='modal' style={{ display: props.visible ? 'block' : 'none' }} onClick={() => props.close()}>
+        <div className='modal'  onClick={() => props.open(false)}>
                     MODAL
         </div>
         <style jsx>{ModalStyle}</style>

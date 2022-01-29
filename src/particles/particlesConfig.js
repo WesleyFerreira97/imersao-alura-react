@@ -8,7 +8,7 @@ const particlesConfig = {
   interactivity: {
   events: {
       onClick: {
-      enable: true,
+      enable: false,
       mode: "push",
       },
       onHover: {
@@ -58,7 +58,7 @@ const particlesConfig = {
   number: {
       density: {
       enable: true,
-      area: 900,
+      area: 1000,
       },
       value: 90,
   },

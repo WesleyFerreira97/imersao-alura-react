@@ -5,7 +5,8 @@ import { BsEmojiSmile } from "react-icons/bs";
 import { supaDb } from '../../../services/supadb';
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Modal } from '../modal/index';
-
+import { ButtonSendSticker } from '../stickers/index';
+import { Image } from '@skynexui/components';
 
 function realTimeMessage(addMessage) {
     return supaDb
@@ -23,13 +24,10 @@ export function ChatContainer(props) {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalItem, setModalItem] = useState('');
 
-    const showModal = () => setModalVisible(true);
-    const hideModal = () => setModalVisible(false);
-    
     useEffect(() => {
         supaDb.from('messages')
             .select('*')
-            .order('id', { ascending: false })
+            .order('id', { ascending: true })
             .then(({data}) => {
                 setMessages(data);
         });
@@ -37,8 +35,8 @@ export function ChatContainer(props) {
         const subscription = realTimeMessage((newMessage) => {
             setMessages((currentList) => {
                 return [
-                    newMessage,
                     ...currentList,
+                    newMessage,
                 ]
             })
         });
@@ -50,19 +48,20 @@ export function ChatContainer(props) {
     }, [])
 
     function handleNewMessage(newMessage) {
-        const message = {
-            from: 'Wesley',
-            text: newMessage,
-        };
-        
-        supaDb.from('messages').insert([message]).then()
-        setCurrentMessage('');
-      }
-
+        if(newMessage.length > 0) {
+            const message = {
+                from: 'Wesley',
+                text: newMessage,
+            };
+            
+            supaDb.from('messages').insert([message]).then()
+            setCurrentMessage('');
+        }
+    }
 
     return (
         <>
-        <Modal message={modalItem} visibile={modalVisible} close={hideModal}/>
+        {modalVisible && <Modal message={modalItem} open={setModalVisible}/> }
             <div className='chat-container'>
                 <div className='chat-container__contact-info'>
                     <div className='contact-info__image'>
@@ -81,12 +80,18 @@ export function ChatContainer(props) {
                             // Inserir função de apagar mensagem aqui
                                 <li key={message.id} 
                                 onClick={(e) => { 
-                                    showModal() 
-                                    setModalItem(e.target) 
+                                    // setModalItem(e.target) 
                                 }} >
                                     <div className='message__wrap' >
                                         <span className='from'>{message.from} :</span>
-                                        <span className='text'>{message.text}</span>
+                                        <span className='text'>
+                                        {message.text.startsWith(':sticker:')
+                                        ? (<Image styleSheet={{maxWidth: '4rem', maxHeight: '4rem'}} src={message.text.replace(':sticker:','')} />)
+                                        // ? message.text
+                                        : (message.text) }
+                                            
+                                            {/* {message.text} */}
+                                            </span>
                                     </div>
                                     <AiOutlineArrowLeft />
                                 </li> 
@@ -115,7 +120,21 @@ export function ChatContainer(props) {
                             e.preventDefault();
                             handleNewMessage(currentMessage);
                         }} ><AiOutlineSend /></button>
-                        <button className='button-sticker'><BsEmojiSmile /></button>
+                        <button className='button-sticker'
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setModalVisible(oldValue => !oldValue);
+                        }}
+                        ><BsEmojiSmile />
+                        </button>
+                        <div>
+                        <ButtonSendSticker 
+                        onStickerClick={ (sticker) => {
+                            handleNewMessage(`:sticker:${sticker}`);
+                            console.log('componente utilizado')
+                            }
+                        } />
+                        </div>
                     </div>
                 </form>
             </div>

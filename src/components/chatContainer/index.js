@@ -6,6 +6,16 @@ import { supaDb } from '../../../services/supadb';
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Modal } from '../modal/index';
 
+
+function realTimeMessage(addMessage) {
+    return supaDb
+    .from('messages')
+    .on('INSERT', (response) => {
+      addMessage(response.new)
+    })
+    .subscribe()
+  }
+
 export function ChatContainer(props) {
     const {login, avatar_url} = props.contactData;
     const [currentMessage, setCurrentMessage] = useState('');
@@ -22,29 +32,31 @@ export function ChatContainer(props) {
             .order('id', { ascending: false })
             .then(({data}) => {
                 setMessages(data);
-            });
+        });
+
+        const subscription = realTimeMessage((newMessage) => {
+            setMessages((currentList) => {
+                return [
+                    newMessage,
+                    ...currentList,
+                ]
+            })
+        });
+        
+        return () => {
+            subscription.unsubscribe();
+        };
+
     }, [])
 
     function handleNewMessage(newMessage) {
         const message = {
-          id: messages.length + 1,
-          from: 'Wesley',
-          text: newMessage,
+            from: 'Wesley',
+            text: newMessage,
         };
-
-        supaDb
-          .from('messages')
-          .insert([
-            message
-          ])
-          .then(( message ) => {
-            setMessages([
-                ...messages,
-              message.data[0],
-            ]);
-          });
-    
-          setCurrentMessage('');
+        
+        supaDb.from('messages').insert([message]).then()
+        setCurrentMessage('');
       }
 
 
@@ -91,7 +103,8 @@ export function ChatContainer(props) {
                             setCurrentMessage(e.target.value);
                         }}
                         onKeyPress={(e) => {
-                            if(e.key == "Enter") {
+                            if(e.key === 'Enter') {
+                                e.preventDefault();
                                 handleNewMessage(currentMessage);
                             }
                         }} />

@@ -37,7 +37,6 @@ export function LoginBox() {
         if (isValid == true && submitted == true) {
             return roteamento.push(`/chat?username=${username}`);
         }
-        console.log(isValid);
     }, [isValid, submitted]);
 
     useEffect(() => {

@@ -45,7 +45,7 @@ export function LoginBox() {
             return setUserImage(`https://github.com/${username}.png`);
         }
 
-        setUserImage('https://i.scdn.co/image/ab6765630000ba8a3f6d77fa5c452925a7040fee');
+        setUserImage('https://www.nerdin.com.br/img/alura_a_circulo.png');
     }, [username]);
 
     return (

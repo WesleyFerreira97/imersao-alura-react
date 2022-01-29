@@ -48,9 +48,6 @@ export default function HomePage () {
         <style jsx>{Logo}</style>
 
         <style jsx>{`
-            #tsparticles {
-                display: none;
-            }
 
         `}</style>
        </>     

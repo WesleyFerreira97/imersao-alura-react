@@ -3,17 +3,19 @@ import appConfig from '../config.json';
 
 export const Background = css`
 
+    .particles-wrap {
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+    }
 
 
 `;
 
 export const Logo = css`
-    .logo-wrap {
-        padding: 1.25rem;
-        z-index: 11;
-    }
     .logo {
         font-size: 2rem;
+        color: white !important;
         font-family: 'Maven Pro', sans-serif;
         color: ${appConfig.theme.colors.neutrals['000']};
     }

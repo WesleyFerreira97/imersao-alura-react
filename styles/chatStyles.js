@@ -3,22 +3,13 @@ import appConfig from '../config.json';
 
 export const Background = css`
 
-    .background {
+    .container {
         height: 100vh;
         width: 100vw;
         position: relative;
         overflow: hidden;
         background-color: ${appConfig.theme.colors.primary['300']};
 
-        &::before {
-            content: '';
-            top: -50%;
-            position: absolute;
-            height: 200%;
-            width: 200%;
-            background-color: ${appConfig.theme.colors.primary['900']};
-            transform: rotate(-35deg);
-        }
     }
 `;
 
@@ -43,7 +34,7 @@ export const ChatStyles = css`
         }
 
         &__sidebar {
-            background-color: ${appConfig.theme.colors.neutrals['400']};
+            background-color: ${appConfig.theme.colors.primary['700']};
             height: 100%;
 
             &-header {
@@ -77,13 +68,11 @@ export const ChatStyles = css`
                             overflow-y: scroll;
 
                             ::-webkit-scrollbar {
-                                width: 10px;
+                                width: 5px;
                             }
                             
                             ::-webkit-scrollbar-track {
-                                background-color: #ebebeb;
-                                -webkit-border-radius: 10px;
-                                border-radius: 10px;
+                                background-color: ${appConfig.theme.colors.primary['800']};
                             }
 
                             ::-webkit-scrollbar-thumb {
@@ -95,6 +84,10 @@ export const ChatStyles = css`
                         
                     }
                 }
+            }
+
+            .container-contacts {
+                padding: .3rem
             }
         }
     }
@@ -160,13 +153,14 @@ export const ChatStyles = css`
                 justify-content: center;
                 align-items: center;
                 padding: 0 1rem;
-                color: ${appConfig.theme.colors.neutrals['000']};
+                color: ${appConfig.theme.colors.neutrals['500']};
                 font-family: 'Maven Pro', sans-serif;
                 font-size: .8rem;
 
                 &:hover {
-                    background: ${appConfig.theme.colors.neutrals['500']};
-                    color: ${appConfig.theme.colors.primary['800']};
+                    background: ${appConfig.theme.colors.primary['700']};
+                    color: ${appConfig.theme.colors.neutrals['100']};
+                    font-weight: 500;
                 }
             }
         }

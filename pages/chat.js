@@ -5,7 +5,8 @@ import { CardList } from '../src/components/cardList/index';
 import { AnimationBox } from '../src/components/Animations/index';
 import { queryUser } from '../services/apiGitHub';
 import { ChatContainer } from '../src/components/chatContainer/index';
-
+import Particles from "react-tsparticles";
+import particlesConfig  from '../src/particles/particlesConfig'
 
 export default function Chat() {
     const router = useRouter();
@@ -34,23 +35,24 @@ export default function Chat() {
         });
     }, [userData]);
 
-    useEffect(() => {
-            // Current user followers
-        queryUser(user, 'followers').then(data => {
-            setFollowers(data);
-        });
-    }, [userData]);
+    // useEffect(() => {
+    //         // Current user followers
+    //     queryUser(user, 'followers').then(data => {
+    //         setFollowers(data);
+    //     });
+    // }, [userData]);
 
-    useEffect(() => {
-        // Get current contact data
-        queryUser(currentContact).then(data => {
-            setCurrentContactData(data);
-        });
-    }, [currentContact]);
+    // useEffect(() => {
+    //     // Get current contact data
+    //     queryUser(currentContact).then(data => {
+    //         setCurrentContactData(data);
+    //     });
+    // }, [currentContact]);
 
     return (
         <>
-        <div className='background'>
+        <div className='container'>
+        <Particles options={particlesConfig} style={{position: 'absolute'}} />
             <div className='chat'>
                 <div className='chat__wrap'>
                     <div className='chat__sidebar'>

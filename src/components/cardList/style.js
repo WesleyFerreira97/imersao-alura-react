@@ -3,23 +3,33 @@ import appConfig from '../../../config.json';
 
 export const CardStyle = css`
     .card-list {
-        background-color: orange;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .card {
         height: 60px;
-        width: 100%;
+        width: 97%;
         display: flex;
         align-items: center;
-        background-color: ${appConfig.theme.colors.neutrals['500']};
+        background-color: ${appConfig.theme.colors.primary['900']};
         padding-left: 2rem;
-        border-bottom: 1px solid #a9a9a9;
+        /* border-bottom: 1px solid #a9a9a9; */
+        /* margin: .3rem 0; */
+        border-radius: 5px;
+        border-bottom: 1px solid ${appConfig.theme.colors.primary['600']};
+        cursor: pointer;
         
         &:hover {
-            background-color: ${appConfig.theme.colors.primary['800']};
-            color: ${appConfig.theme.colors.neutrals['100']};
+            background-color: ${appConfig.theme.colors.primary['700']};
             transition: .4s;
+            .card__info-name {
+                color: ${appConfig.theme.colors.neutrals['100']};
+                font-weight: 500;
+            }
         }
 
         &__image {
@@ -44,6 +54,8 @@ export const CardStyle = css`
                 font-size: 1rem;
                 font-family: 'Mulish', sans-serif;
                 text-transform: capitalize;
+                color: ${appConfig.theme.colors.neutrals['100']};
+                font-weight: 200;
             }
         }
     }

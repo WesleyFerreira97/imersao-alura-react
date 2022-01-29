@@ -42,12 +42,12 @@ export default function Chat() {
     //     });
     // }, [userData]);
 
-    // useEffect(() => {
-    //     // Get current contact data
-    //     queryUser(currentContact).then(data => {
-    //         setCurrentContactData(data);
-    //     });
-    // }, [currentContact]);
+    useEffect(() => {
+        // Get current contact data
+        queryUser(currentContact).then(data => {
+            setCurrentContactData(data);
+        });
+    }, [currentContact]);
 
     return (
         <>

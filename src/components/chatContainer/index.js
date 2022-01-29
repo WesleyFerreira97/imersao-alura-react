@@ -4,11 +4,17 @@ import { AiOutlineSend } from "react-icons/ai";
 import { BsEmojiSmile } from "react-icons/bs";
 import { supaDb } from '../../../services/supadb';
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { Modal } from '../modal/index';
 
 export function ChatContainer(props) {
     const {login, avatar_url} = props.contactData;
     const [currentMessage, setCurrentMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalItem, setModalItem] = useState('');
+
+    const showModal = () => setModalVisible(true);
+    const hideModal = () => setModalVisible(false);
     
     useEffect(() => {
         supaDb.from('messages')
@@ -41,8 +47,10 @@ export function ChatContainer(props) {
           setCurrentMessage('');
       }
 
+
     return (
         <>
+        <Modal message={modalItem} visibile={modalVisible} close={hideModal}/>
             <div className='chat-container'>
                 <div className='chat-container__contact-info'>
                     <div className='contact-info__image'>
@@ -58,9 +66,17 @@ export function ChatContainer(props) {
                 <div className='chat-container__chat-content'>
                     <ul className='chat-content__message'>
                         {messages.map((message) => (
-                                <li key={message.id}>
-                                    <span className='from'>{message.from} :</span>
-                                    <span className='text'>{message.text}</span>
+                            // Inserir função de apagar mensagem aqui
+                                <li key={message.id} 
+                                onClick={(e) => { 
+                                    showModal() 
+                                    setModalItem(e.target) 
+                                }} >
+                                    <div className='message__wrap' >
+                                        <span className='from'>{message.from} :</span>
+                                        <span className='text'>{message.text}</span>
+                                    </div>
+                                    <AiOutlineArrowLeft />
                                 </li> 
                         ))}
                     </ul>
@@ -95,6 +111,7 @@ export function ChatContainer(props) {
         </>
     );
 }
+
 
 
 

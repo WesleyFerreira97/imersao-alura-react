@@ -36,7 +36,7 @@ export function HeaderTheme() {
                 marginTop: '.5rem',
             }}
             >
-                Conctando Devs 
+                Conectando Devs 
                 {/* <BiNetworkChart style={{fontSize: '2rem'}} /> */}
             </Text>
         </Box>

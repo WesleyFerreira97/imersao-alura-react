@@ -14,7 +14,7 @@ export const ChatStyle = css`
             align-items: center;
             padding: 1.25rem 4rem;
             background-color: ${appConfig.theme.colors.primary['800']};
-            border: 2px solid ${appConfig.theme.colors.primary['900']};
+            border-bottom: 1px solid ${appConfig.theme.colors.primary['600']};
         }
 
         .contact-info__image {
@@ -113,7 +113,8 @@ export const ChatContent = css`
         width: 100%;
         overflow-y: scroll;
         padding-right: 2rem;
-
+        padding-bottom: 1rem;
+        margin-bottom: .4rem;
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -132,17 +133,43 @@ export const ChatContent = css`
     }
 
     .chat-content__message {
-        height: 50%;
+        /* height: 50%; */
         margin-left: 4.5rem;
 
         li {
+            height: 50px;
+            padding: 1rem;
             color: ${appConfig.theme.colors.neutrals['100']};
             padding: .75rem .25rem;
+            font-size: .9rem;
+            margin: .5rem 0;
+            position: relative;
+            cursor: pointer;
+
+          
+            .message__wrap {
+                height: 100%;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                background-color: ${appConfig.theme.colors.primary['600']};
+                border-radius: 3px;
+                padding:  0 1rem;
+
+                &:hover {
+                    background-color: ${appConfig.theme.colors.primary['700']};
+                }
+            }
 
             .from {
                 margin-right: 1rem;
+                color: ${appConfig.theme.colors.neutrals['900']};
             }
         }
     }
 
+
+
 `;
+
+

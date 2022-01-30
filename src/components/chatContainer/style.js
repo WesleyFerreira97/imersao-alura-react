@@ -155,16 +155,23 @@ export const ChatContent = css`
                 display: flex;
                 align-items: center;
                 /* background-color: ${appConfig.theme.colors.primary['600']}; */
-                border-radius: 3px;
+                
                 /* padding:  1rem 1rem; */
 
                 &:hover {
-                    background-color: ${appConfig.theme.colors.primary['700']};
+                    background: rgb(215,55,93);
+                    background: linear-gradient(90deg, rgba(215,55,93,1) 19%, rgba(16,51,188,1) 60%, rgba(12,23,49,1) 96%, rgba(12,23,49,1) 100%);
+                    border-radius: 50px;
+                    transition: .5s;
+
+                .message__body {
+                    background-color: transparent;
+                }
                 }
 
                 &__wrap {
                     height: 100%;
-                    background-color: ${appConfig.theme.colors.primary['700']};
+                    
                     display: flex;
                     align-items: center;
                     border-radius: 10px;
@@ -186,9 +193,14 @@ export const ChatContent = css`
                 &__body {
                     display: flex;
                     flex-direction: column;
+                    background-color: ${appConfig.theme.colors.primary['700']};
+                    border-radius: 10px;
+                    padding-left: .75rem;
 
                     & > * {
-                        padding: .75rem;
+                        padding: .5rem;
+                        margin: 0 .5rem;
+                        padding-right: 3rem;
                     }
                 }
 
@@ -196,16 +208,20 @@ export const ChatContent = css`
                     text-transform: capitalize;
                     font-size: .8rem;
                     color: ${appConfig.theme.colors.neutrals['400']};
+                    font-family: 'Mulish', sans-serif;
+                    font-weight: 600;
                 }
 
                 &__text {
                     height: 100%;
                     width: 100%;
+                    font-family: 'Mulish', sans-serif;
+                    font-weight: 200;
 
                     img {
                         /* Image Sticker/Gif */
-                        height: 100%;
-                        width: 100%;
+                        height: 150px;
+                        width: 150px;
                         object-fit: cover;
                     }
                 }

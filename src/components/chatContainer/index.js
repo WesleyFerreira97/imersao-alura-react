@@ -95,7 +95,11 @@ export function ChatContainer(props) {
                                         </div>
                                         <div className='message__body'>
                                             <h5 className='message__from'>{message.from}</h5>
-                                            <p className='message__text'>{message.text}</p>
+                                            <p className='message__text'>
+                                            {message.text.startsWith(':sticker:')
+                                                ? (<Image styleSheet={{maxWidth: '4rem', maxHeight: '4rem'}} src={message.text.replace(':sticker:','')} />)
+                                                : (message.text) }
+                                            </p>
                                         </div>
                                         </div>
                                     </div>
@@ -107,9 +111,7 @@ export function ChatContainer(props) {
 
 
                 {/* <AiOutlineArrowLeft /> */}
-                {/* {message.text.startsWith(':sticker:')
-                                        ? (<Image styleSheet={{maxWidth: '4rem', maxHeight: '4rem'}} src={message.text.replace(':sticker:','')} />)
-                                        : (message.text) } */}
+                
                 <form className='chat-container__input-bar'>
                     <div className='input-bar__input'>
                         <input 

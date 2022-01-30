@@ -10,8 +10,9 @@ export const ChatStyle = css`
         flex-direction: column;
 
         &__contact-info {
-            /* height: 10%; */
+            height: 70px;
             width: 100%;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             padding: 1.25rem 4rem;
@@ -53,7 +54,9 @@ export const ChatStyle = css`
 
         &__input-bar {
 /* height: 10%; */
-flex: 1 0 0;
+/* flex: 1 0 0; */
+            height: 70px;
+            flex-shrink: 0;
             width: 100%;
             display: flex;
             align-items: center;
@@ -147,8 +150,6 @@ export const ChatContent = css`
     .chat-content__message {
         /* height: 50%; */
         margin-left: 0;
-
-
 
         li {
             /* height: 50px; */

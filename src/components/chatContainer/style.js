@@ -139,27 +139,75 @@ export const ChatContent = css`
         margin-left: 4.5rem;
 
         li {
-            height: 50px;
-            padding: 1rem;
+            /* height: 50px; */
+            /* padding: 1rem; */
             color: ${appConfig.theme.colors.neutrals['100']};
-            padding: .75rem .25rem;
+            padding: .4rem;
             font-size: .9rem;
-            margin: .5rem 0;
+            /* margin: .5rem 0; */
             position: relative;
             cursor: pointer;
 
           
-            .message__wrap {
+            .message {
                 height: 100%;
-                position: absolute;
+                /* position: absolute; */
                 display: flex;
                 align-items: center;
-                background-color: ${appConfig.theme.colors.primary['600']};
+                /* background-color: ${appConfig.theme.colors.primary['600']}; */
                 border-radius: 3px;
-                padding:  0 1rem;
+                /* padding:  1rem 1rem; */
 
                 &:hover {
                     background-color: ${appConfig.theme.colors.primary['700']};
+                }
+
+                &__wrap {
+                    height: 100%;
+                    background-color: ${appConfig.theme.colors.primary['700']};
+                    display: flex;
+                    align-items: center;
+                    border-radius: 10px;
+                }
+
+                &__user-image {
+                    height: 100%;
+                    width: 100%;
+                    
+                    img {
+                        height: 50px;
+                        width: 50px;
+                        object-fit: cover;
+                        border-radius: 100%;
+                        margin: .2rem .75rem;
+                    }
+                }
+
+                &__body {
+                    display: flex;
+                    flex-direction: column;
+
+                    & > * {
+                        padding: .75rem;
+                    }
+                }
+
+                &__from {
+                    text-transform: capitalize;
+                    font-size: .8rem;
+                    color: ${appConfig.theme.colors.neutrals['400']};
+                }
+
+                &__text {
+                    height: 100%;
+                    width: 100%;
+
+                    img {
+                        /* Image Sticker/Gif */
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
                 }
             }
 

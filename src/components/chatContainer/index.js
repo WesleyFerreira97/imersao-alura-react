@@ -7,10 +7,12 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Modal } from '../modal/index';
 import { ButtonSendSticker } from '../stickers/index';
 import { Image } from '@skynexui/components';
+const dbName = 'tabletests';
+import { queryUser } from '../../../services/apiGitHub';
 
 function realTimeMessage(addMessage) {
     return supaDb
-    .from('messages')
+    .from(dbName)
     .on('INSERT', (response) => {
       addMessage(response.new)
     })
@@ -25,7 +27,7 @@ export function ChatContainer(props) {
     const [modalItem, setModalItem] = useState('');
 
     useEffect(() => {
-        supaDb.from('messages')
+        supaDb.from(dbName)
             .select('*')
             .order('id', { ascending: true })
             .then(({data}) => {
@@ -52,9 +54,10 @@ export function ChatContainer(props) {
             const message = {
                 from: login,
                 text: newMessage,
+                url: avatar_url,
             };
             
-            supaDb.from('messages').insert([message]).then()
+            supaDb.from(dbName).insert([message]).then()
             setCurrentMessage('');
         }
     }
@@ -74,6 +77,9 @@ export function ChatContainer(props) {
                         {login}
                     </h3>
                 </div>
+
+
+
                 <div className='chat-container__chat-content'>
                     <ul className='chat-content__message'>
                         {messages.map((message) => (
@@ -82,19 +88,28 @@ export function ChatContainer(props) {
                                 onClick={(e) => { 
                                     // setModalItem(e.target) 
                                 }} >
-                                    <div className='message__wrap' >
-                                        <span className='from'>{message.from} :</span>
-                                        <span className='text'>
-                                        {message.text.startsWith(':sticker:')
-                                        ? (<Image styleSheet={{maxWidth: '4rem', maxHeight: '4rem'}} src={message.text.replace(':sticker:','')} />)
-                                        : (message.text) }
-                                            </span>
+                                    <div className='message'>
+                                        <div className='message__wrap'>
+                                        <div className='message__user-image'>
+                                            <img src={message.url} alt={login} />
+                                        </div>
+                                        <div className='message__body'>
+                                            <h5 className='message__from'>{message.from}</h5>
+                                            <p className='message__text'>{message.text}</p>
+                                        </div>
+                                        </div>
                                     </div>
-                                    <AiOutlineArrowLeft />
+                                    
                                 </li> 
                         ))}
                     </ul>
                 </div>
+
+
+                {/* <AiOutlineArrowLeft /> */}
+                {/* {message.text.startsWith(':sticker:')
+                                        ? (<Image styleSheet={{maxWidth: '4rem', maxHeight: '4rem'}} src={message.text.replace(':sticker:','')} />)
+                                        : (message.text) } */}
                 <form className='chat-container__input-bar'>
                     <div className='input-bar__input'>
                         <input 
@@ -121,7 +136,6 @@ export function ChatContainer(props) {
                         <ButtonSendSticker 
                         onStickerClick={ (sticker) => {
                             handleNewMessage(`:sticker:${sticker}`);
-                            console.log('componente utilizado')
                             }
                         } />
                         </div>

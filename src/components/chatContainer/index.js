@@ -7,7 +7,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Modal } from '../modal/index';
 import { ButtonSendSticker } from '../stickers/index';
 import { Image } from '@skynexui/components';
-const dbName = 'messages';
+const dbName = 'tabletests';
 import { queryUser } from '../../../services/apiGitHub';
 
 function realTimeMessage(addMessage) {

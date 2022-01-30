@@ -87,7 +87,15 @@ export const ChatStyles = css`
             }
 
             .container-contacts {
-                padding: .3rem
+                padding: .3rem;
+                white-space: normal;
+                
+                h2 {
+                    color: ${appConfig.theme.colors.neutrals['500']};
+                    font-size: .8rem;
+                    padding: 1rem;
+
+                }
             }
         }
     }

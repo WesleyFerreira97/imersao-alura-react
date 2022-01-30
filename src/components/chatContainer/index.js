@@ -44,13 +44,13 @@ export function ChatContainer(props) {
         return () => {
             subscription.unsubscribe();
         };
-
+        
     }, [])
 
     function handleNewMessage(newMessage) {
         if(newMessage.length > 0) {
             const message = {
-                from: 'Wesley',
+                from: login,
                 text: newMessage,
             };
             
@@ -87,10 +87,7 @@ export function ChatContainer(props) {
                                         <span className='text'>
                                         {message.text.startsWith(':sticker:')
                                         ? (<Image styleSheet={{maxWidth: '4rem', maxHeight: '4rem'}} src={message.text.replace(':sticker:','')} />)
-                                        // ? message.text
                                         : (message.text) }
-                                            
-                                            {/* {message.text} */}
                                             </span>
                                     </div>
                                     <AiOutlineArrowLeft />
@@ -120,13 +117,6 @@ export function ChatContainer(props) {
                             e.preventDefault();
                             handleNewMessage(currentMessage);
                         }} ><AiOutlineSend /></button>
-                        <button className='button-sticker'
-                        onClick={(e) => {
-                            e.preventDefault();
-                            setModalVisible(oldValue => !oldValue);
-                        }}
-                        ><BsEmojiSmile />
-                        </button>
                         <div>
                         <ButtonSendSticker 
                         onStickerClick={ (sticker) => {

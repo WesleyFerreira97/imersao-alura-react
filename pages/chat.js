@@ -74,6 +74,7 @@ export default function Chat() {
                         <div className="chat__sidebar-tabs">
                             <div className='container-wrap' style={{transform: `translateY(-${indexTab * 100}%)`}}>
                                 <div className='container-contacts'>
+                                    <h2>Eu sei que você tem multiplas personalidades, escoha outra abaixo</h2>
                                     <CardList listItems={following} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
                                 </div>
                                 <div className='container-settings'>

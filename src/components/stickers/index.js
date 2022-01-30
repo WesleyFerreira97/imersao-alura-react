@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Button, Text, Image } from '@skynexui/components';
 import appConfig from '../../../config.json';
+import { BsEmojiSmile } from "react-icons/bs";
 
 export function ButtonSendSticker(props) {
   const [isOpen, setOpenState] = React.useState('');
@@ -11,7 +12,14 @@ export function ButtonSendSticker(props) {
         position: 'relative',
       }}
     >
-      <Button
+      <BsEmojiSmile 
+      onClick={() => setOpenState(!isOpen)}
+      style={{
+        color: appConfig.theme.colors.neutrals['500'], 
+        cursor: 'pointer',
+        fontSize: '1.75rem',
+      }} />
+      {/* <Button
         styleSheet={{
           borderRadius: '50%',
           padding: '0 3px 0 0',
@@ -31,7 +39,7 @@ export function ButtonSendSticker(props) {
         }}
         label="😋"
         onClick={() => setOpenState(!isOpen)}
-      />
+      /> */}
       {isOpen && (
         <Box
           styleSheet={{

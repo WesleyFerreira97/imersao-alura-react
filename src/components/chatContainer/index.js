@@ -97,7 +97,7 @@ export function ChatContainer(props) {
                                             <h5 className='message__from'>{message.from}</h5>
                                             <p className='message__text'>
                                             {message.text.startsWith(':sticker:')
-                                                ? (<Image styleSheet={{maxWidth: '4rem', maxHeight: '4rem'}} src={message.text.replace(':sticker:','')} />)
+                                                ? (<img src={message.text.replace(':sticker:','')} />)
                                                 : (message.text) }
                                             </p>
                                         </div>

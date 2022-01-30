@@ -9,7 +9,12 @@ export const Background = css`
         position: relative;
         overflow: hidden;
         background-color: ${appConfig.theme.colors.primary['300']};
+    }
 
+    @media (max-width: 992px) {
+        .background-particles {
+            display: none;
+        }
     }
 `;
 
@@ -31,6 +36,13 @@ export const ChatStyles = css`
             position: relative;
             overflow: hidden;
             background-color: ${appConfig.theme.colors.primary['800']};
+        }
+
+        @media (max-width: 992px) {
+            .chat__wrap {
+                height: 100%;
+                width: 100%;
+            }
         }
 
         &__sidebar {

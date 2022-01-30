@@ -1,36 +1,3 @@
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
-// TROCAR SERVIDOR
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Background, ChatContent, ChatStyles } from '../styles/chatStyles';
@@ -85,7 +52,9 @@ export default function Chat() {
     return (
         <>
         <div className='container'>
-        <Particles options={particlesConfig} style={{position: 'absolute'}} />
+        <div className='background-particles'>
+            <Particles options={particlesConfig} style={{position: 'absolute'}} />
+        </div>
             <div className='chat'>
                 <div className='chat__wrap'>
                     <div className='chat__sidebar'>

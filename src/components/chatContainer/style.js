@@ -6,9 +6,11 @@ export const ChatStyle = css`
         height: 100%;
         width: 100%;
         background-color: ${appConfig.theme.colors.primary['800']};
+        display: flex;
+        flex-direction: column;
 
         &__contact-info {
-            height: 10%;
+            /* height: 10%; */
             width: 100%;
             display: flex;
             align-items: center;
@@ -50,12 +52,13 @@ export const ChatStyle = css`
 
 
         &__input-bar {
-            height: 10%;
+/* height: 10%; */
+flex: 1 0 0;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 1rem;
+            padding: .5rem 1rem;
             background-color: ${appConfig.theme.colors.primary['900']};
             box-shadow: 0px -1px 0px 0px ${appConfig.theme.colors.neutrals['100']};
         }
@@ -107,9 +110,10 @@ export const ChatStyle = css`
 export const ChatContent = css`
 
     .chat-container__chat-content {
-        height: 80%;
+        /* height: 80%; */
         width: 100%;
         overflow-y: scroll;
+        overflow-x: hidden;
         padding-right: 2rem;
         padding-bottom: 1rem;
         margin-bottom: .4rem;
@@ -134,9 +138,17 @@ export const ChatContent = css`
         }
     }
 
+    @media (min-width: 992px) {
+        .chat-content__message {
+            margin-left: 3.5rem !important;
+        }
+    }
+
     .chat-content__message {
         /* height: 50%; */
-        margin-left: 4.5rem;
+        margin-left: 0;
+
+
 
         li {
             /* height: 50px; */
@@ -179,7 +191,6 @@ export const ChatContent = css`
 
                 &__user-image {
                     height: 100%;
-                    width: 100%;
                     
                     img {
                         height: 50px;
@@ -196,6 +207,7 @@ export const ChatContent = css`
                     background-color: ${appConfig.theme.colors.primary['700']};
                     border-radius: 10px;
                     padding-left: .75rem;
+                    word-break: break-word;
 
                     & > * {
                         padding: .5rem;
@@ -223,6 +235,15 @@ export const ChatContent = css`
                         height: 150px;
                         width: 150px;
                         object-fit: cover;
+                    }
+
+                    @media (max-width: 767px) {
+                        .message__text {
+                            display: none;
+                            img {
+                                display: none;
+                            }
+                        }
                     }
                 }
             }

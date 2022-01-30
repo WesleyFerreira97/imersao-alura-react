@@ -6,7 +6,9 @@ function MyApp({ Component, pageProps }) {
         <>
         <Head>
         <title>AluraCord</title>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" /> */}
+          <meta name="viewport" 
+content="width=device-width, height=device-height, initial-scale=1"></meta>
         </Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         {/* <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> */}

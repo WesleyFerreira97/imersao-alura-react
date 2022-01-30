@@ -10,7 +10,7 @@ export const ChatStyle = css`
         flex-direction: column;
 
         &__contact-info {
-            height: 70px;
+            height: 60px;
             width: 100%;
             flex-shrink: 0;
             display: flex;
@@ -18,6 +18,12 @@ export const ChatStyle = css`
             padding: 1.25rem 4rem;
             background-color: ${appConfig.theme.colors.primary['800']};
             border-bottom: 1px solid ${appConfig.theme.colors.primary['600']};
+        }
+
+        @media (max-width: 992px) {
+            .chat-container__contact-info {
+                padding: 1.25rem 1rem;
+            }
         }
 
         .contact-info__image {
@@ -28,24 +34,25 @@ export const ChatStyle = css`
             align-items: center;
 
             img {
-                height: 50px;
-                width: 50px;
+                height: 40px;
+                width: 40px;
                 object-fit: cover;
                 border-radius: 100%;
             }
 
             .return-button {
                 color: white;
-                font-size: 2rem;
+                font-size: 1.5rem;
                 background-color: transparent;
                 border: none;
                 cursor: pointer;
+                margin-right: 1rem;
             }
         }
 
         .contact-info__username {
             color: ${appConfig.theme.colors.neutrals['100']};
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-family: 'Maven Pro', sans-serif;
             font-weight: 400;
             text-transform: capitalize;

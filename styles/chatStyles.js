@@ -133,11 +133,12 @@ export const ChatStyles = css`
             display: flex;
             align-items: center;
             margin-bottom: 2rem;
+            cursor: pointer;
         }
 
         &__image {
-            height: 80px;
-            width: 80px;
+            height: 70px;
+            width: 70px;
             border-radius: 100%;
             object-fit: cover;
         }

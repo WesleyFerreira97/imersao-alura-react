@@ -7,7 +7,6 @@ export function ButtonSendSticker(props) {
   const [isOpen, setOpenState] = React.useState('');
 
   return (
-    <>
       <div className='container-wrap'>
         <BsEmojiSmile 
         onClick={() => setOpenState(!isOpen)}
@@ -96,7 +95,6 @@ export function ButtonSendSticker(props) {
           }
       `}</style>
       </div>
-    </>
   )
 }
 

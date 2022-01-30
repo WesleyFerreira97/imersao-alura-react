@@ -14,6 +14,10 @@ export const Background = css`
     @media (max-width: 992px) {
         .background-particles {
             display: none;
+
+            canvas {
+                background-color: #fff !important;
+            }
         }
     }
 `;

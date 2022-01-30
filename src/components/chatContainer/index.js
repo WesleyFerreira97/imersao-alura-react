@@ -7,7 +7,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Modal } from '../modal/index';
 import { ButtonSendSticker } from '../stickers/index';
 import { Image } from '@skynexui/components';
-const dbName = 'tabletests';
+const dbName = 'messages';
 import { queryUser } from '../../../services/apiGitHub';
 
 function realTimeMessage(addMessage) {
@@ -76,6 +76,7 @@ export function ChatContainer(props) {
                     <h3 className='contact-info__username'>
                         {login}
                     </h3>
+                    <button>LOGOUT</button>
                 </div>
 
 

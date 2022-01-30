@@ -2,6 +2,12 @@ const particlesConfig = {
   background: {
   color: {
       value: "#1033BC",
+      image: 'radial-gradient(rgb(74, 0, 0), rgb(0, 0, 0));',
+      animation: {
+        enable: true,
+        speed: 150,
+        sync: false
+    }
   },
   },
   fpsLimit: 120,

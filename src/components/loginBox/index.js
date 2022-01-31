@@ -26,7 +26,7 @@ export function LoginBox() {
 
                 console.log('Erro na requisição');
             });
-            
+
         return setIsValid(false);
     }
 
@@ -41,6 +41,7 @@ export function LoginBox() {
 
 
     async function handleChange(e) {
+        // Refatorar e diminuir a quantidade de requisições na api
         const fe = await fetch(`https://api.github.com/users/${username}`);
         if(fe.status == 200) {
             return setIsValid(true);
@@ -113,7 +114,7 @@ export function LoginBox() {
                     fullWidth
                     onChange={function (event) {
                         setUsername(event.target.value);
-                        handleChange();
+                        // handleChange();
                     }}
                     styleSheet={{
                         margin: '1rem 0',

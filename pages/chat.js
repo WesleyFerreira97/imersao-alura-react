@@ -27,14 +27,10 @@ export default function Chat() {
     }, [user]);
 
     useEffect(() => {
-        // Current user following
         queryUser(user, 'following').then(data => {
             setFollowing(data);
         });
-    }, [userData]);
 
-    useEffect(() => {
-            // Current user followers
         queryUser(user, 'followers').then(data => {
             setFollowers(data);
         });

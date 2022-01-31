@@ -3,41 +3,31 @@ import appConfig from '../../../config.json';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Footer } from '../../../src/components/footer';
+import logo from '../../../assets/logo.png'
 
 export function LoginBox() {
     const [username, setUsername] = useState('');
     const [isValid, setIsValid] = useState();
-    const [submitted, setSubmitted] = useState(false);
     const roteamento = useRouter();
-    const [userImage, setUserImage] = useState('');
+    const [userImage, setUserImage] = useState(logo.src);
 
     async function validateRoute(user) {
+
         await fetch(`https://api.github.com/users/${user}`)
-        // await fetch(`https://swapi.dev/api/${user}`)
             .then(response => {
                 if (response.status == 200) {
                     setIsValid(true);
-                    return;
+                    return roteamento.push(`/chat?username=${username}`);
                 }
-                setIsValid(false);
+
+                console.log(response.status, 'Erro');
+                return setIsValid(false);
             }).catch(err => {
+
                 console.log('Erro na requisição');
             });
-        return
+        return setIsValid(false);
     }
-
-    useEffect(() => {
-        if (isValid == true && submitted == true) {
-            return roteamento.push(`/chat?username=${username}`);
-        }
-
-    }, [isValid, submitted]);
-
-    useEffect(() => {
-        if (isValid == true && submitted == true) {
-            return roteamento.push(`/chat?username=${username}`);
-        }
-    }, [isValid, submitted]);
 
     useEffect(() => {
         if(username.length >= 2 && isValid == true) {
@@ -45,8 +35,8 @@ export function LoginBox() {
         }
         
         console.log('Usuario invalido');
-        setUserImage('https://www.nerdin.com.br/img/alura_a_circulo.png');
-    }, [username]);
+        setUserImage(logo.src);
+    }, [isValid]);
 
     return (
         <>
@@ -85,7 +75,7 @@ export function LoginBox() {
         }} >
             <div className='image-user'>
                 <Image 
-                src={userImage} 
+                src={userImage}  
                 styleSheet={{
                     height: '100%',
                     width: '100%',
@@ -94,26 +84,25 @@ export function LoginBox() {
                 }}
                     />
             </div>
-
+                {console.log(logo)}
             <Box 
             as='form'
             onSubmit={(e) => {
                 e.preventDefault();
+
                 validateRoute(username)
-                setSubmitted(true);
             }}
             styleSheet={{
                 width: '100%',
                 margintop: '3rem',
-            }}
-            >
+            }} >
                 {isValid == false && <p className='login-form__error'>Usuário não encontrado</p>}
                 <TextField
                     label="Login"
                     fullWidth
                     onChange={function (event) {
                         setUsername(event.target.value);
-                        // validateRoute(event.target.value);
+                        // validateRoute(username);
                     }}
                     styleSheet={{
                         margin: '1rem 0',

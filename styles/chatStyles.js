@@ -127,6 +127,13 @@ export const ChatStyles = css`
             padding-right: 1rem;
             font-family: 'Maven Pro', sans-serif;
             font-size: 1.3rem;
+            color: ${appConfig.theme.colors.neutrals['500']};
+        }
+
+        &__disclaimer {
+            color: ${appConfig.theme.colors.neutrals['500']};
+            font-family: 'Maven Pro', sans-serif;
+            font-size: 1rem;
         }
 
     }

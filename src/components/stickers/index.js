@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState} from 'react';
 import { Box, Text, Image } from '@skynexui/components';
 import appConfig from '../../../config.json';
 import { BsEmojiSmile } from "react-icons/bs";
 
 export function ButtonSendSticker(props) {
-  const [isOpen, setOpenState] = React.useState('');
+  const [isOpen, setOpenState] = useState('');
 
   return (
       <div className='container-wrap'>
@@ -24,7 +24,6 @@ export function ButtonSendSticker(props) {
                 <li className='sticker-item'
                   key={sticker}
                   onClick={() => {
-                    console.log('[DENTRO DO COMPONENTE] Clicou no sticker:', sticker);
                     if (Boolean(props.onStickerClick)) {
 
                       props.onStickerClick(sticker);

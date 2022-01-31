@@ -43,9 +43,10 @@ export function LoginBox() {
         if(username.length >= 2 && isValid == true) {
             return setUserImage(`https://github.com/${username}.png`);
         }
-
+        
+        console.log('Bateu no invalido, que chato em?');
         setUserImage('https://www.nerdin.com.br/img/alura_a_circulo.png');
-    }, [username]);
+    }, [username, isValid]);
 
     return (
         <>
@@ -106,6 +107,7 @@ export function LoginBox() {
                 margintop: '3rem',
             }}
             >
+                {isValid == false && <p className='login-form__error'>Usuário não encontrado</p>}
                 <TextField
                     label="Login"
                     fullWidth
@@ -127,7 +129,7 @@ export function LoginBox() {
                     }}
                     value={username}
                 />
-                {isValid == false && <p className='login-form__error'>Usuário não encontrado</p>}
+                
                 <Button
                 type='submit'
                 label='Entrar'

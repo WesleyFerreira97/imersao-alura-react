@@ -9,6 +9,7 @@ import { ButtonSendSticker } from '../stickers/index';
 import { Image } from '@skynexui/components';
 const dbName = 'tabletests';
 import { queryUser } from '../../../services/apiGitHub';
+import { useRouter } from 'next/router';
 
 function realTimeMessage(addMessage) {
     return supaDb
@@ -20,10 +21,18 @@ function realTimeMessage(addMessage) {
   }
 
 export function ChatContainer(props) {
-    const {login, avatar_url} = props.contactData;
+    // const {login, avatar_url} = props.toggleUser;
+    const [currentUser, setCurrentUser] = useState({
+        login: props.currentUser.login,
+        avatar_url: props.currentUser.avatar_url
+    });
+
+    const roteamento = useRouter();
     const [currentMessage, setCurrentMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
+
+    // Modal Teste
     const [modalItem, setModalItem] = useState('');
 
     useEffect(() => {
@@ -49,12 +58,21 @@ export function ChatContainer(props) {
         
     }, [])
 
+    useEffect(() => {
+        if(props.toggleUser.login) {
+            setCurrentUser({
+                login: props.toggleUser.login,
+                avatar_url: props.toggleUser.avatar_url,
+            })
+        }
+    }, [props.toggleUser])
+
     function handleNewMessage(newMessage) {
         if(newMessage.length > 0) {
             const message = {
-                from: login,
+                from: currentUser.login,
                 text: newMessage,
-                url: avatar_url,
+                url: currentUser.avatar_url,
             };
             
             supaDb.from(dbName).insert([message]).then()
@@ -71,19 +89,21 @@ export function ChatContainer(props) {
                     <button className='return-button' onClick={() => props.toggleChat(false)}>
                         <AiOutlineArrowLeft />
                     </button>
-                        <img src={avatar_url} alt={login} />
+                        <img src={currentUser.avatar_url} alt={currentUser.login} />
                     </div>
                     <h3 className='contact-info__username'>
-                        {login}
+                        {currentUser.login}
                     </h3>
-                    <button>LOGOUT</button>
+                    <button className='contact-info__return-button'
+                        onClick={() => roteamento.push(`/`)}
+                    >LOGOUT</button>
                 </div>
 
 
 
                 <div className='chat-container__chat-content'>
                     <ul className='chat-content__message'>
-                        {messages.map((message) => (
+                        {messages  && messages.map((message) => (
                             // Inserir função de apagar mensagem aqui
                                 <li key={message.id} 
                                 onClick={(e) => { 

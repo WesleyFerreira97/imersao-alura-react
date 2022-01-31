@@ -8,7 +8,10 @@ export function Footer() {
         styleSheet={{
             position: 'absolute',
             bottom: '2.5rem',
-            display: 'flex',
+            display: {
+                xs: 'none',
+                md: 'flex',
+            },
             justifyContent: 'center',
         }} >
             <div className='footer-icons'>
@@ -30,7 +33,7 @@ export function Footer() {
             <style jsx>{`
                 .footer-icons {
                     color: ${appConfig.theme.colors.neutrals['000']};
-                    fontSize: '3.5rem';
+                    font-size: '3.5rem';
                 }
                 .linkedin, .github, .behance {
                     padding: 2rem;

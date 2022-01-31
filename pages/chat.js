@@ -19,7 +19,7 @@ export default function Chat() {
     const [followers, setFollowers] = useState([]);
 
     const [currentContact, setCurrentContact] = useState('');
-    const [currentContactData, setCurrentContactData] = useState([]);
+    const [newUser, setNewUser] = useState([]);
 
     useEffect(() => {
         // Search current user
@@ -45,7 +45,7 @@ export default function Chat() {
     useEffect(() => {
         // Get current contact data
         queryUser(currentContact).then(data => {
-            setCurrentContactData(data);
+            setNewUser(data);
         });
     }, [currentContact]);
 
@@ -86,7 +86,9 @@ export default function Chat() {
                                     <span className='bio'>Bio:  {userData.bio}</span>
                                     <span className='company'>Company: {userData.company}</span>
                                     <span className='location'>Location: {userData.location}</span>
-                                    <h3> Meu layout é perfeito, se bugar a culpa é da sua máquina</h3>
+                                    <div className='container-other__disclaimer'>
+                                        <h3>Meu layout é perfeito, se bugar a culpa é da sua máquina</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +97,7 @@ export default function Chat() {
                         <div className='chat__content-wrap' 
                         style={{transform: mobileOpenChat ? 'translateY(0)' : ''}}
                         >
-                            <ChatContainer contactData={currentContactData} toggleChat={setMobileOpenChat} />
+                            <ChatContainer currentUser={userData} toggleUser={newUser} toggleChat={setMobileOpenChat} />
                         </div>
                     </div>
                 </div>

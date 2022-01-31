@@ -9,6 +9,7 @@ Esse projeto utiliza a API do github para fazer uma query nos perfis e trazer in
 </p>
 
 ## Desenvolvimento 
+O Layout foi desenvolvido desde o inicio com a caracteristica mobile first, com recusros de responsividade do framework SkynexUi na tela de login e uma implementação feita em HTML/CSS puro na pagina de Chat com a utilização do conceito de CSS BEM, devido ao desenvolvimento ter sido realizado em Styles JSX, com o intuito de melhorar a experiencia de desenvolvimento e futuras refatorações foi utilizado também a dependencia @styled-jsx/plugin-sass, que acrescenta ao Styles JSX recursos de SASS
 
 ## Tecnologias Utilizadas 
 - React Js ( Next Js )
@@ -16,4 +17,10 @@ Esse projeto utiliza a API do github para fazer uma query nos perfis e trazer in
 - SupaBase
 - Ts-particles
 - API Github
+
+## Features
+- Acesso a dados de usuários do Github
+- Chat em tempo real ( via BaaS ) 
+- Stickers animados 
+
 

@@ -31,9 +31,9 @@ O Layout foi desenvolvido desde o inicio com a caracteristica mobile first, com 
 
 ## 📲Mobile
 <p >
-<img src="https://user-images.githubusercontent.com/7539166/151867825-67f21ae1-5546-493b-9a4d-f0960ee54db7.png" width="30%" height="500px">
-<img src="https://user-images.githubusercontent.com/7539166/151868022-30dfdcca-6542-4350-9688-56950a501235.png" width="30%" height="500px">
-<img src="https://user-images.githubusercontent.com/7539166/151868197-f2a0f65f-e4a7-4d37-b21a-e1f9803a6e3a.png" width="30%" height="500px">
+<img src="https://user-images.githubusercontent.com/7539166/151867825-67f21ae1-5546-493b-9a4d-f0960ee54db7.png" width="30%" height="400px">
+<img src="https://user-images.githubusercontent.com/7539166/151868022-30dfdcca-6542-4350-9688-56950a501235.png" width="30%" height="400px">
+<img src="https://user-images.githubusercontent.com/7539166/151868197-f2a0f65f-e4a7-4d37-b21a-e1f9803a6e3a.png" width="30%" height="400px">
 </p>
 
 

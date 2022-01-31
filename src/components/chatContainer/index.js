@@ -21,19 +21,16 @@ function realTimeMessage(addMessage) {
   }
 
 export function ChatContainer(props) {
-    // const {login, avatar_url} = props.toggleUser;
+    const {login, avatar_url} = props.currentUser;
     const [currentUser, setCurrentUser] = useState({
-        login: props.currentUser.login,
-        avatar_url: props.currentUser.avatar_url
+        login: login || 'wesleyferreira97',
+        avatar_url: avatar_url || 'https://avatars.githubusercontent.com/u/7539166?v=4',
     });
-
+    console.log(currentUser);
     const roteamento = useRouter();
     const [currentMessage, setCurrentMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
-
-    // Modal Teste
-    const [modalItem, setModalItem] = useState('');
 
     useEffect(() => {
         supaDb.from(dbName)
@@ -58,14 +55,16 @@ export function ChatContainer(props) {
         
     }, [])
 
-    useEffect(() => {
-        if(props.toggleUser.login) {
-            setCurrentUser({
-                login: props.toggleUser.login,
-                avatar_url: props.toggleUser.avatar_url,
-            })
-        }
-    }, [props.toggleUser])
+    // useEffect(() => {
+    //     const {login, avatar_url} = props.currentUser;
+        
+    //     if(login) {
+    //         setCurrentUser({
+    //             login: login,
+    //             avatar_url: avatar_url,
+    //         })
+    //     }
+    // }, [props.toggleUser])
 
     function handleNewMessage(newMessage) {
         if(newMessage.length > 0) {
@@ -82,7 +81,6 @@ export function ChatContainer(props) {
 
     return (
         <>
-        {modalVisible && <Modal message={modalItem} open={setModalVisible}/> }
             <div className='chat-container'>
                 <div className='chat-container__contact-info'>
                     <div className='contact-info__image'>
@@ -98,8 +96,6 @@ export function ChatContainer(props) {
                         onClick={() => roteamento.push(`/`)}
                     >LOGOUT</button>
                 </div>
-
-
 
                 <div className='chat-container__chat-content'>
                     <ul className='chat-content__message'>
@@ -130,9 +126,6 @@ export function ChatContainer(props) {
                     </ul>
                 </div>
 
-
-                {/* <AiOutlineArrowLeft /> */}
-                
                 <form className='chat-container__input-bar'>
                     <div className='input-bar__input'>
                         <input 

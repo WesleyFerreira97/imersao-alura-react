@@ -33,6 +33,7 @@ export default function Chat() {
         queryUser(user, 'following').then(data => {
             setFollowing(data);
         });
+        console.log(userData);
     }, [userData]);
 
     // useEffect(() => {
@@ -61,8 +62,8 @@ export default function Chat() {
                         <div className='chat__sidebar-header'>
                             <div className='header__wrap' onClick={() => setIndexTab(2)}>
                                 
-                                <img className='header__image' src={userData.avatar_url} alt={userData.login} />
-                                <h3 className='header__username'>{userData.name}</h3>
+                                {/* <img className='header__image' src={userData.avatar_url} alt={userData.login} />
+                                <h3 className='header__username'>{userData.name}</h3> */}
                             </div>
                             {/* <div className='header__search'>
                                 <input type={'text'} placeholder={'Search'} />
@@ -83,9 +84,9 @@ export default function Chat() {
                                     <CardList listItems={followers} stateChat={setMobileOpenChat} setUser={setCurrentContact} />
                                 </div>
                                 <div className='container-other'>
-                                    <span className='bio'>Bio:  {userData.bio}</span>
+                                    {/* <span className='bio'>Bio:  {userData.bio}</span>
                                     <span className='company'>Company: {userData.company}</span>
-                                    <span className='location'>Location: {userData.location}</span>
+                                    <span className='location'>Location: {userData.location}</span> */}
                                     <div className='container-other__disclaimer'>
                                         <h3>Meu layout é perfeito, se bugar a culpa é da sua máquina</h3>
                                     </div>

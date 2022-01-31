@@ -26,6 +26,7 @@ export function LoginBox() {
 
                 console.log('Erro na requisição');
             });
+            
         return setIsValid(false);
     }
 
@@ -37,6 +38,16 @@ export function LoginBox() {
         console.log('Usuario invalido');
         setUserImage(logo.src);
     }, [isValid]);
+
+
+    async function handleChange(e) {
+        const fe = await fetch(`https://api.github.com/users/${username}`);
+        if(fe.status == 200) {
+            return setIsValid(true);
+        }
+        
+        setIsValid(false);
+    }
 
     return (
         <>
@@ -102,7 +113,7 @@ export function LoginBox() {
                     fullWidth
                     onChange={function (event) {
                         setUsername(event.target.value);
-                        // validateRoute(username);
+                        handleChange();
                     }}
                     styleSheet={{
                         margin: '1rem 0',

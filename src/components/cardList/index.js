@@ -2,18 +2,18 @@ import React from 'react';
 import { CardStyle } from './style';
 
 export function CardList(props) {
-    const listItems = props.listItems || [];
+    const { listItems } = props;
 
-    function managerState(login) {
+    function managerState() {
         props.stateChat(true); 
-        props.setUser(login);
     }
+    
     return (
         <>
         <ul className='card-list'>
-        {listItems.map(item => {
+        {props.listItems && listItems.map(item => {
             return (
-                <li className='card' key={item.id} onClick={() => managerState(item.login)}>
+                <li className='card' key={item.id} onClick={() => managerState()}>
                     <div className='card__image'>
                         <img src={item.avatar_url} alt={item.login} />
                     </div>

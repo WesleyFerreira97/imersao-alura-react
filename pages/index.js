@@ -1,8 +1,4 @@
-import { useEffect, useState } from 'react';
-import { Box, TextField, Text, Button } from '@skynexui/components';
-import appConfig from '../config.json';
-import { Background, Logo, LoginWrap } from '../styles/homeStyles';
-import { useRouter } from 'next/router';
+import { Box } from '@skynexui/components';
 import Particles from "react-tsparticles";
 import particlesConfig  from '../src/particles/particlesConfig'
 import { LoginBox } from '../src/components/loginBox';

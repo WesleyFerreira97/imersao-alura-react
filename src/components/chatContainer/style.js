@@ -15,6 +15,7 @@ export const ChatStyle = css`
             flex-shrink: 0;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 1.25rem 4rem;
             background-color: ${appConfig.theme.colors.primary['800']};
             border-bottom: 1px solid ${appConfig.theme.colors.primary['600']};
@@ -124,7 +125,16 @@ export const ChatStyle = css`
                 margin-right: .5rem;
             }
         }
+
+
+        .contact-info__logout {
+            color: ${appConfig.theme.colors.neutrals['100']};
+            background-color: ${appConfig.theme.colors.primary['700']};
+            border: none;
+            padding: .5rem;
+        }
     }
+    
 `;
 
 

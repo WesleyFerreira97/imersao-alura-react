@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { Footer } from '../../../src/components/footer';
 
 export function LoginBox() {
-    const [username, setUsername] = useState('peas');
+    const [username, setUsername] = useState('');
     const [isValid, setIsValid] = useState();
     const [submitted, setSubmitted] = useState(false);
     const roteamento = useRouter();
@@ -44,9 +44,9 @@ export function LoginBox() {
             return setUserImage(`https://github.com/${username}.png`);
         }
         
-        console.log('Bateu no invalido, que chato em?');
+        console.log('Usuario invalido');
         setUserImage('https://www.nerdin.com.br/img/alura_a_circulo.png');
-    }, [username, isValid]);
+    }, [username]);
 
     return (
         <>
@@ -113,7 +113,7 @@ export function LoginBox() {
                     fullWidth
                     onChange={function (event) {
                         setUsername(event.target.value);
-                        validateRoute(event.target.value);
+                        // validateRoute(event.target.value);
                     }}
                     styleSheet={{
                         margin: '1rem 0',

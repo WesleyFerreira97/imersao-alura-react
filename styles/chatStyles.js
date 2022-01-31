@@ -123,17 +123,30 @@ export const ChatStyles = css`
         padding-left: 1rem;
         white-space: normal;
         
-        span {
+        h3 {
             padding-right: 1rem;
             font-family: 'Maven Pro', sans-serif;
             font-size: 1.3rem;
-            color: ${appConfig.theme.colors.neutrals['500']};
+            color: ${appConfig.theme.colors.neutrals['400']};
+            margin: 1rem;
+
+            span {
+                color: ${appConfig.theme.colors.neutrals['900']};
+            }
         }
 
         &__disclaimer {
-            color: ${appConfig.theme.colors.neutrals['500']};
             font-family: 'Maven Pro', sans-serif;
-            font-size: 1rem;
+            margin-top: 3rem;
+            
+            h3 {
+                font-size: 1rem;
+                color: ${appConfig.theme.colors.neutrals['900']};
+            }
+
+            a {
+                color: inherit;
+            }
         }
 
     }

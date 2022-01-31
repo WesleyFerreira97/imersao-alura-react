@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ChatStyle, ChatContent } from './style';
 import { AiOutlineSend } from "react-icons/ai";
-import { BsEmojiSmile } from "react-icons/bs";
 import { supaDb } from '../../../services/supadb';
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { Modal } from '../modal/index';
 import { ButtonSendSticker } from '../stickers/index';
-import { Image } from '@skynexui/components';
-const dbName = 'tabletests';
-import { queryUser } from '../../../services/apiGitHub';
 import { useRouter } from 'next/router';
+const dbName = 'tabletests';
 
 function realTimeMessage(addMessage) {
     return supaDb
@@ -21,16 +17,10 @@ function realTimeMessage(addMessage) {
   }
 
 export function ChatContainer(props) {
-    const {login, avatar_url} = props.currentUser;
-    const [currentUser, setCurrentUser] = useState({
-        login: login || 'wesleyferreira97',
-        avatar_url: avatar_url || 'https://avatars.githubusercontent.com/u/7539166?v=4',
-    });
-    console.log(currentUser);
+    const { login, avatar_url } = props.currentUser;
     const roteamento = useRouter();
     const [currentMessage, setCurrentMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const [modalVisible, setModalVisible] = useState(false);
 
     useEffect(() => {
         supaDb.from(dbName)
@@ -55,23 +45,12 @@ export function ChatContainer(props) {
         
     }, [])
 
-    // useEffect(() => {
-    //     const {login, avatar_url} = props.currentUser;
-        
-    //     if(login) {
-    //         setCurrentUser({
-    //             login: login,
-    //             avatar_url: avatar_url,
-    //         })
-    //     }
-    // }, [props.toggleUser])
-
     function handleNewMessage(newMessage) {
         if(newMessage.length > 0) {
             const message = {
-                from: currentUser.login,
+                from: login,
                 text: newMessage,
-                url: currentUser.avatar_url,
+                url: avatar_url,
             };
             
             supaDb.from(dbName).insert([message]).then()
@@ -87,12 +66,12 @@ export function ChatContainer(props) {
                     <button className='return-button' onClick={() => props.toggleChat(false)}>
                         <AiOutlineArrowLeft />
                     </button>
-                        <img src={currentUser.avatar_url} alt={currentUser.login} />
-                    </div>
+                        <img src={avatar_url} alt={login} />
                     <h3 className='contact-info__username'>
-                        {currentUser.login}
+                        {login}
                     </h3>
-                    <button className='contact-info__return-button'
+                    </div>
+                    <button className='contact-info__logout'
                         onClick={() => roteamento.push(`/`)}
                     >LOGOUT</button>
                 </div>
@@ -100,7 +79,7 @@ export function ChatContainer(props) {
                 <div className='chat-container__chat-content'>
                     <ul className='chat-content__message'>
                         {messages  && messages.map((message) => (
-                            // Inserir função de apagar mensagem aqui
+                            // Delete message here
                                 <li key={message.id} 
                                 onClick={(e) => { 
                                     // setModalItem(e.target) 
@@ -120,7 +99,6 @@ export function ChatContainer(props) {
                                         </div>
                                         </div>
                                     </div>
-                                    
                                 </li> 
                         ))}
                     </ul>

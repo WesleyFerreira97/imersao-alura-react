@@ -6,6 +6,8 @@
 
 # Projeto Aluracord - Imersão React Alura
 
+<a href="https://imersao-alura-react-c80bkgo5b-wesleyferreira97.vercel.app/">Link do Projeto</a>
+
 ## Sobre
 Esse projeto utiliza a API do github para fazer uma query nos perfis e trazer informações acerca da conta do usuário, além de implementar um chat, que envia e recebe dados em tempo real com uma plataforma de BackEnd as a Service ( Supabase). O Design foi desenvolvido utilizando parte da identidade visual da plataforma Alura Cursos ( Cores ) e Whatsapp Web ( Interface ).
 
